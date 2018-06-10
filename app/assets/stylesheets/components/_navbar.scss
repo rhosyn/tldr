@@ -3,8 +3,14 @@
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
   background: white;
   transition: all 0.3s ease;
-  height: 70px;
-  padding: 10px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Right section */
+.navbar-wagon-right {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -50,9 +56,9 @@
   width: 10px;
   position: absolute;
   right: 10px;
-  bottom: -6px;
+  top: -6px;
   background-color: white;
   transform: rotate(45deg);
-  border-right: 1px solid #E6E6E6;
-  border-bottom: 1px solid #E6E6E6;
+  border-left: 1px solid #E6E6E6;
+  border-top: 1px solid #E6E6E6;
 }

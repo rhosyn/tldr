@@ -13,6 +13,7 @@ class Smmry
         a.smmry_charcount = smmry["sm_api_character_count"]
         a.smmry_contentreduced = smmry["sm_api_content_reduced"]
         a.save
+        sleep(12)
       end
     end
   end
