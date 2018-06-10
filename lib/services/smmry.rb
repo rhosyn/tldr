@@ -9,11 +9,11 @@ class Smmry
         news_url = a.newsapi_articleurl
         smmry = JSON.parse(open(url).read)
         a.smmry_keywords = smmry["sm_api_keyword_array"]
-        a.smmry_content = smmry["sm_api_content"].strip.gsub(/\&#039;/, "'").split("[BREAK]").each {|s| s.strip }
+        a.smmry_content = smmry["sm_api_content"].strip.gsub(/\&#039;/, "'").split("[BREAK]").each {|s| s.strip } if smmry["sm_api_content"]
         a.smmry_charcount = smmry["sm_api_character_count"]
         a.smmry_contentreduced = smmry["sm_api_content_reduced"]
         a.save
-        sleep(12)
+        sleep(11)
       end
     end
   end
