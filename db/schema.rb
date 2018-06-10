@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_10_123226) do
+ActiveRecord::Schema.define(version: 2018_06_10_145032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2018_06_10_123226) do
     t.string "newsapi_author"
     t.datetime "newsapi_publishedat"
     t.integer "newsapi_resultno"
-    t.text "newsapi_source"
+    t.text "newsapi_source_name"
     t.string "newsapi_category"
     t.text "smmry_keywords"
     t.text "smmry_content"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2018_06_10_123226) do
     t.integer "smmry_contentreduced"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "newsapi_source_id"
   end
 
   create_table "users", force: :cascade do |t|
