@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_10_112903) do
+ActiveRecord::Schema.define(version: 2018_06_10_123226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.string "newsapi_title"
+    t.text "newsapi_description"
+    t.string "newsapi_imgeurl"
+    t.string "newsapi_articleurl"
+    t.string "newsapi_author"
+    t.datetime "newsapi_publishedat"
+    t.integer "newsapi_resultno"
+    t.text "newsapi_source"
+    t.string "newsapi_category"
+    t.text "smmry_keywords"
+    t.text "smmry_content"
+    t.integer "smmry_charcount"
+    t.integer "smmry_contentreduced"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
