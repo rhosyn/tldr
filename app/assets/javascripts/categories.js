@@ -1,7 +1,4 @@
-
-
 const catButton = document.querySelectorAll(".btn-sm");
-
 
 catButton.forEach(function (btn) {
   btn.addEventListener('click', function() {
