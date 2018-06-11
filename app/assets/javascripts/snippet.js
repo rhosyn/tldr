@@ -2,13 +2,18 @@ const start_button = document.getElementById("sample_start_button");
 start_button.addEventListener("click", (event) => {
   console.log(event.currentTarget);
   console.log(article_snippets[0]);
-  generate_snippets(article_snippets[0])
+  generate_snippets(article_snippets[0]);
+  attach_target_listeners();
 });
 
-
-const snippet_container = document.querySelector(".snippet_container")
-
-// Replace this with the click event on the un
+function attach_target_listeners() {
+  document.querySelectorAll('.next_target').forEach((element) => {
+    element.addEventListener("click", (event) => {
+      console.log(event.currentTarget);
+      next_snippet();
+    })
+  })
+}
 
 function generate_snippets(article_snippets) {
   const size = article_snippets.length;
@@ -19,10 +24,12 @@ function generate_snippets(article_snippets) {
     // set everything to hidden by default
     let snippet_container = document.createElement("div");
     snippet_container.className = 'snippet_container snippet_hidden';
-    snippet_container.id = count;
+    snippet_container.id = `snippet-${count}`;
 
     // If it's the first card, unhide it
-    if (count == 1) { snippet_container.classList.toggle('snippet_hidden')}
+    if (count == 1) {
+     activate_snippet(snippet_container);
+   }
 
     // Create and append children. Order doesn't matter
     let snippet_content = document.createElement("div");
@@ -51,3 +58,21 @@ function generate_snippets(article_snippets) {
 });
 }
 
+function activate_snippet(snippet){
+  snippet.classList.toggle('snippet_hidden');
+  snippet.classList.toggle('snippet_active');
+}
+
+function next_snippet() {
+  current_snippet = document.querySelector(".snippet_active");
+  activate_snippet(current_snippet);
+  const next_id = `snippet-${parseInt(current_snippet.id.replace('snippet-',''), 10) + 1}`;
+  const prev_id = `snippet-${parseInt(current_snippet.id.replace('snippet-',''), 10) - 1}`;
+  // debugger
+  if (event.target.classList.contains("target_right")) {
+    activate_snippet(document.getElementById(next_id))
+  }
+  else if (event.target.classList.contains("target_left")){
+    activate_snippet(document.getElementById(prev_id))
+  }
+}
