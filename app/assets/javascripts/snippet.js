@@ -19,6 +19,7 @@ function generate_snippets(article_snippets) {
     // set everything to hidden by default
     let snippet_container = document.createElement("div");
     snippet_container.className = 'snippet_container snippet_hidden';
+    snippet_container.id = count;
 
     // If it's the first card, unhide it
     if (count == 1) { snippet_container.classList.toggle('snippet_hidden')}
@@ -39,11 +40,11 @@ function generate_snippets(article_snippets) {
 
     let target_right = document.createElement("div");
     target_right.className = 'next_target target_right';
-    snippet_container.appendChild(target_right);
+    if (count != size) { snippet_container.appendChild(target_right)}
 
     let target_left = document.createElement("div");
     target_left.className = 'next_target target_left';
-    snippet_container.appendChild(target_left);
+    if (count != 1) {snippet_container.appendChild(target_left)}
 
     // debugger
     document.body.append(snippet_container);
