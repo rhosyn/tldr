@@ -14,11 +14,11 @@
 <body>
 
   <% article = @articles.first %>
-  <% article_snippets = article.smmry_content.gsub!("[","").gsub!("]","").split(",").to_a %>
+  <% article_snippets = article.smmry_content.gsub!("[","").gsub!("]","").split("\",").to_a %>
 
   <script>
     var article_snippets = [<%= raw article_snippets.to_json %>];
-    var article_id = <%= article.id %>
+    // var article_id = <%= article.id %>;
   </script>
 
 
