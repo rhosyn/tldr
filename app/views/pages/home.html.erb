@@ -1,26 +1,6 @@
 <main>
   <div id="carousel">
 
-    <div class="hideLeft">
-      <p class="headline"><%= "#{Article.find(15).newsapi_title}" %></p>
-      <div class="card-image" style="background-image: url(<%= image_path("#{Article.find(15).newsapi_imgeurl}") %>);">
-      </div>
-    </div>
-
-    <div class="prevLeftSecond">
-      <p class="headline"><%= "#{Article.find(2).newsapi_title}" %></p>
-      <div class="card-image" style="background-image: url(<%= image_path("#{Article.find(2).newsapi_imgeurl}") %>);">
-      </div>
-
-    </div>
-
-    <div class="prev">
-      <p class="headline"><%= "#{Article.find(3).newsapi_title}" %></p>
-      <div class="card-image" style="background-image: url(<%= image_path("#{Article.find(3).newsapi_imgeurl}") %>);">
-      </div>
-
-    </div>
-
     <div class="selected">
       <p class="headline"><%= "#{Article.find(4).newsapi_title}" %></p>
       <div class="card-image" style="background-image: url(<%= image_path("#{Article.find(4).newsapi_imgeurl}") %>);">
@@ -42,17 +22,14 @@
 
     </div>
 
-    <div class="hideRight">
-      <p class="headline"><%= "#{Article.find(7).newsapi_title}" %></p>
-      <div class="card-image" style="background-image: url(<%= image_path("#{Article.find(7).newsapi_imgeurl}") %>);">
+    <% @articles.each do |a| %>
+      <div class="hideRight">
+        <p class="headline"><%= "#{a.newsapi_title}" %></p>
+        <div class="card-image" style="background-image: url(<%= image_path("#{a.newsapi_imgeurl}") %>);">
+        </div>
       </div>
-    </div>
+    <% end %>
 
   </div>
-
-<!-- <div class="buttons">
-  <button id="prev">Prev</button>
-  <button id="next">Next</button>
-</div> -->
 
 </main>
