@@ -30,7 +30,7 @@
   margin: 0 0 2em;
   color: rgba(255, 255, 255, 0.5);
 }
-.overlay {
+.overlay{
   opacity: 0;
   visibility: hidden;
   position: fixed;
@@ -79,7 +79,29 @@
   background-size: cover;
   width: 300px;
   height: 400px;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
+}
+
+.trial_content.active {
+  z-index:200;
+  position:absolute;
+}
+
+.overlaybox{
+  z-index: 190;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // pointer-events: none;
+}
+
+.overlaycontainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
