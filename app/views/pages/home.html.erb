@@ -1,29 +1,21 @@
 <main>
+   <!--  <div class="container">
+      <div class="start-text text-center">
+          <h1>What do you want to see today?</h1>
+        </div>
+      </div> -->
   <div id="carousel">
 
-    <div class="selected">
-      <p class="headline"><%= "#{Article.find(4).newsapi_title}" %></p>
-      <div class="card-image" style="background-image: url(<%= image_path("#{Article.find(4).newsapi_imgeurl}") %>);">
+    <!-- <div class="selected article" data-category="<%#= Article.find(4).newsapi_category %>">
+      <p class="headline"><%#= "#{Article.find(4).newsapi_title}" %></p>
+      <div class="card-image" style="background-image: url(<%#= image_path("#{Article.find(4).newsapi_imgeurl}") %>);">
       </div>
 
-    </div>
+    </div> -->
 
-    <div class="next">
-      <p class="headline"><%= "#{Article.find(5).newsapi_title}" %></p>
-      <div class="card-image" style="background-image: url(<%= image_path("#{Article.find(5).newsapi_imgeurl}") %>);">
-      </div>
-
-    </div>
-
-    <div class="nextRightSecond">
-      <p class="headline"><%= "#{Article.find(6).newsapi_title}" %></p>
-      <div class="card-image" style="background-image: url(<%= image_path("#{Article.find(6).newsapi_imgeurl}") %>);">
-      </div>
-
-    </div>
 
     <% @articles.each do |a| %>
-      <div class="hideRight">
+      <div class="hideRight article" data-category="<%= a.newsapi_category %>">
         <p class="headline"><%= "#{a.newsapi_title}" %></p>
         <div class="card-image" style="background-image: url(<%= image_path("#{a.newsapi_imgeurl}") %>);">
         </div>

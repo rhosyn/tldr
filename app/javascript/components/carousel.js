@@ -13,34 +13,49 @@ function moveToSelected(element) {
   var prevSecond = $(prev).prev();
   var nextSecond = $(next).next();
 
-  $(selected).removeClass().addClass("selected");
 
-  $(prev).removeClass().addClass("prev");
-  $(next).removeClass().addClass("next");
+    $(selected).removeClass().addClass("selected");
 
-  $(nextSecond).removeClass().addClass("nextRightSecond");
-  $(prevSecond).removeClass().addClass("prevLeftSecond");
+    $(prev).removeClass().addClass("prev");
+    $(next).removeClass().addClass("next");
 
-  $(nextSecond).nextAll().removeClass().addClass('hideRight');
-  $(prevSecond).prevAll().removeClass().addClass('hideLeft');
+    $(nextSecond).removeClass().addClass("nextRightSecond");
+    $(prevSecond).removeClass().addClass("prevLeftSecond");
 
+    $(nextSecond).nextAll().removeClass().addClass('hideRight');
+    $(prevSecond).prevAll().removeClass().addClass('hideLeft');
+
+    $(nextSecond).nextAll().removeClass().addClass('hideRight');
+    $(prevSecond).prevAll().removeClass().addClass('hideLeft');
+
+    let car = document.getElementById("carousel");
+    Array.from(car.children).forEach(function (ch) {
+      let btnSelected = document.querySelector(".btn-sm.selected");
+      if (ch.dataset.category == btnSelected.dataset.category) {
+        ch.classList.remove("hidden");
+        ch.classList.add("visible");
+      } else {
+        ch.classList.add("hidden")
+        ch.classList.remove("visible");
+      }
+    });
 }
 
-// Eventos teclado
-$(document).keydown(function(e) {
-    switch(e.which) {
-        case 37: // left
-        moveToSelected('prev');
-        break;
+// // Eventos teclado
+// $(document).keydown(function(e) {
+//     switch(e.which) {
+//         case 37: // left
+//         moveToSelected('prev');
+//         break;
 
-        case 39: // right
-        moveToSelected('next');
-        break;
+//         case 39: // right
+//         moveToSelected('next');
+//         break;
 
-        default: return;
-    }
-    e.preventDefault();
-});
+//         default: return;
+//     }
+//     e.preventDefault();
+// });
 
 $('#carousel div').click(function() {
   moveToSelected($(this));

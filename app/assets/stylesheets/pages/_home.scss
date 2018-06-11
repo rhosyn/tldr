@@ -122,7 +122,6 @@ html, body, main {
 #carousel div.nextRightSecond img {
   width: 200px;
 }
-
 .card-image {
   height: 100%;
   width: 100%;
@@ -130,4 +129,25 @@ html, body, main {
   pointer-events: none;
   clip-path: ellipse(77% 50% at 62% 25%);
 }
+
+.visible {
+  display: block;
+  .p {
+    display: block;
+  }
+}
+
+.hidden {
+  display: none;
+  .p {
+    display: none;
+  }
+}
+
+
+
+
+
+
+
 
