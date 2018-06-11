@@ -1,10 +1,10 @@
-const start_button = document.getElementById("sample_start_button");
-start_button.addEventListener("click", (event) => {
-  // console.log(event.currentTarget);
-  // console.log(article_snippets[0]);
-  generate_snippets(article_snippets[0]);
-  attach_target_listeners();
-});
+// const start_button = document.getElementById("sample_start_button");
+// start_button.addEventListener("click", (event) => {
+//   // console.log(event.currentTarget);
+//   // console.log(article_snippets[0]);
+//   generate_snippets(article_snippets[0]);
+//   attach_target_listeners();
+// });
 
 function attach_target_listeners() {
   document.querySelectorAll('.next_target').forEach((element) => {
@@ -54,7 +54,9 @@ function generate_snippets(article_snippets) {
     if (count != 1) {snippet_container.appendChild(target_left)}
 
     // debugger
-    document.body.append(snippet_container);
+    // document.body.append(snippet_container);
+    $( ".overlaycontainer" ).append(snippet_container);
+
 });
 }
 

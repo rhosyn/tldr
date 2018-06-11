@@ -75,13 +75,17 @@
 }
 
 .trial_content {
-  background: url('http://watchersonthewall.com/wp-content/uploads/2018/01/Winterfell-South-6x01-1024x572.jpg') no-repeat center center fixed;
-  background-size: cover;
-  width: 300px;
-  height: 400px;
+  // background: url('http://watchersonthewall.com/wp-content/uploads/2018/01/Winterfell-South-6x01-1024x572.jpg') no-repeat center center fixed;
+  // background-size: cover;
+  // width: 300px;
+  // height: 400px;
 }
 
 .trial_content.active {
+  // z-index:200;
+  // position:absolute;
+}
+.snippet_active {
   z-index:200;
   position:absolute;
 }
