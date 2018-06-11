@@ -15,6 +15,7 @@
 
   <% article = @articles.first %>
   <% article_snippets = article.smmry_content.gsub!("[","").gsub!("]","").split("\",").to_a %>
+  <% article_snippets.select{ |s| s.strip[0] == "\""}.map!{|snippet| snippet.strip.gsub!("\"","")} %>
 
   <script>
     var article_snippets = [<%= raw article_snippets.to_json %>];

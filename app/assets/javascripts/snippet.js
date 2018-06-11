@@ -20,7 +20,9 @@ function generate_snippets(article_snippets) {
   let count = 0;
   article_snippets.forEach((snippet) => {
     count += 1;
-
+    snippet = snippet.trim();
+    if (snippet.charAt(0) === '"') {snippet = snippet.substr(1, snippet.length-1)}
+    snippet = snippet.trim();
     // set everything to hidden by default
     let snippet_container = document.createElement("div");
     snippet_container.className = 'snippet_container snippet_hidden';
