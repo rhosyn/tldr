@@ -1,7 +1,7 @@
 const start_button = document.getElementById("sample_start_button");
 start_button.addEventListener("click", (event) => {
-  console.log(event.currentTarget);
-  console.log(article_snippets[0]);
+  // console.log(event.currentTarget);
+  // console.log(article_snippets[0]);
   generate_snippets(article_snippets[0]);
   attach_target_listeners();
 });
@@ -68,11 +68,17 @@ function next_snippet() {
   activate_snippet(current_snippet);
   const next_id = `snippet-${parseInt(current_snippet.id.replace('snippet-',''), 10) + 1}`;
   const prev_id = `snippet-${parseInt(current_snippet.id.replace('snippet-',''), 10) - 1}`;
-  // debugger
   if (event.target.classList.contains("target_right")) {
     activate_snippet(document.getElementById(next_id))
   }
   else if (event.target.classList.contains("target_left")){
     activate_snippet(document.getElementById(prev_id))
   }
+}
+
+function destroy_snippets() {
+  document.querySelectorAll('.snippet_container').forEach((snippet) => {
+    console.log(snippet);
+    snippet.remove();
+  })
 }
