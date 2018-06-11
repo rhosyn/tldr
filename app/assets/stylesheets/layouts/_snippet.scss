@@ -21,7 +21,7 @@
   color: white;
   font-family: Raleway;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 16px;
 }
 
 .snippet_no {
@@ -30,13 +30,13 @@
   bottom: 10%;
   color: white;
   font-family: Raleway;
-  font-size: 16px;
+  font-size: 10px;
 }
 
 .next_target {
   position: absolute;
   height: 100%;
-  width: 20px;
+  width: 30px;
   background-color: #FFFFFF;
   opacity: 0.4;
   top: 0px;
@@ -48,4 +48,8 @@
 
 .target_left {
   left: 0px;
+}
+
+.snippet_hidden {
+  display: none;
 }

@@ -13,7 +13,24 @@
 </head>
 <body>
 
-  <%= render 'snippet' %>
+  <% article = @articles.first %>
+  <% article_snippets = article.smmry_content.gsub!("[","").gsub!("]","").split(",").to_a %>
+
+  <script>
+    var article_snippets = [<%= raw article_snippets.to_json %>];
+  </script>
+
+
+<!--   <div class="snippet_container ">
+    <div class="snippet_content">
+      <p>Here's the best tidbit you'll ever need to know</p>
+    </div>
+    <div class="snippet_no">3/10</div>
+    <div class="next_target target_right"></div>
+    <div class="next_target target_left"></div>
+  </div> -->
+
+<button class= "btn btn-primary" id="sample_start_button">Click Me!</button>
 
 <!--   <div class="overlay">
     <div class="overlaycontainer">
