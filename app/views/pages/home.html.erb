@@ -1,17 +1,15 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 text-center">
-      title 1
-    </div>
+<main>
+
+  <div id="carousel">
+
+    <% @articles.each do |a| %>
+      <div class="hideRight article" data-category="<%= a.newsapi_category %>">
+        <p class="headline"><%= "#{a.newsapi_title}" %></p>
+        <div class="card-image" style="background-image: url(<%= image_path("#{a.newsapi_imgeurl}") %>);">
+        </div>
+      </div>
+    <% end %>
+
   </div>
-  <div class="row">
-    <div class="col-xs-12 text-center">
-      title 1
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 text-center">
-      title 1
-    </div>
-  </div>
-</div>
+
+</main>
