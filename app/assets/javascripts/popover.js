@@ -1,10 +1,10 @@
 
 $('.click-me').on('click', function(e) {
-  console.log('hello');
+  // console.log('hello');
   $('.overlay').toggleClass('active');
   $('#carousel').toggleClass('smaller');
   $('.click-me').toggleClass('active');
-  generate_snippets(article_snippets[0]);
+  generate_snippets();
   attach_target_listeners();
 
 });
