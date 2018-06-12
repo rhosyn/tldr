@@ -1,8 +1,8 @@
 
-$('.sample_start_button').on('click', function(e) {
+$('.click-me').on('click', function(e) {
+  console.log('hello');
   $('.overlay').toggleClass('active');
-  $('.content').toggleClass('smaller');
-  // $('.trial_content').toggleClass('active');
+  $('#carousel').toggleClass('smaller');
   generate_snippets(article_snippets[0]);
   attach_target_listeners();
 
@@ -10,9 +10,6 @@ $('.sample_start_button').on('click', function(e) {
 
 $('.overlaybox').on('click', function(e) {
   $('.overlay').toggleClass('active');
-  $('.content').toggleClass('smaller');
-  // $('.trial_content').toggleClass('active');
+  $('#carousel').toggleClass('smaller');
   destroy_snippets();
 });
-
-// pointer event: none
