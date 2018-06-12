@@ -1,11 +1,3 @@
-// const start_button = document.getElementById("sample_start_button");
-// start_button.addEventListener("click", (event) => {
-//   // console.log(event.currentTarget);
-//   // console.log(article_snippets[0]);
-//   generate_snippets(article_snippets[0]);
-//   attach_target_listeners();
-// });
-
 function attach_target_listeners() {
   document.querySelectorAll('.next_target').forEach((element) => {
     element.addEventListener("click", (event) => {
@@ -55,8 +47,6 @@ function generate_snippets(article_snippets) {
     target_left.className = 'next_target target_left';
     if (count != 1) {snippet_container.appendChild(target_left)}
 
-    // debugger
-    // document.body.append(snippet_container);
     $( ".overlaycontainer" ).append(snippet_container);
 
 });
