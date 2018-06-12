@@ -4,32 +4,7 @@
   -o-transition: all 0.25s ease-out;
   transition: all 0.25s ease-out;
 }
-// .intro {
-//   position: absolute;
-//   height: 100%;
-//   width: 100%;
-//   // background: #0082c8;
-// }
-// .intro .content {
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   width: 80%;
-//   margin: -6em -40% 0;
-//   display: block;
-//   text-align: center;
-// }
-// .intro .content h1 {
-//   // font-size: 3em;
-//   // margin: 0;
-//   // color: #FFF;
-// }
-// .intro .content h2 {
-//   font-size: 2em;
-//   font-weight: 100;
-//   margin: 0 0 2em;
-//   color: rgba(255, 255, 255, 0.5);
-// }
+
 .overlay{
   opacity: 0;
   visibility: hidden;
@@ -74,17 +49,6 @@
   filter: blur(10px);
 }
 
-.trial_content {
-  // background: url('http://watchersonthewall.com/wp-content/uploads/2018/01/Winterfell-South-6x01-1024x572.jpg') no-repeat center center fixed;
-  // background-size: cover;
-  // width: 300px;
-  // height: 400px;
-}
-
-.trial_content.active {
-  // z-index:200;
-  // position:absolute;
-}
 .snippet_active {
   z-index:200;
   position:absolute;
@@ -98,7 +62,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  // pointer-events: none;
 }
 
 .overlaycontainer {
