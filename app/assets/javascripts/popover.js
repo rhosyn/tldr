@@ -1,7 +1,9 @@
 
-$('.sample_start_button').on('click', function(e) {
+$('#carousel').on('click', function(e) {
+  // e.cancelBubble=true;
+  console.log('hello');
   $('.overlay').toggleClass('active');
-  $('.content').toggleClass('smaller');
+  $('#carousel').toggleClass('smaller');
   // $('.trial_content').toggleClass('active');
   generate_snippets(article_snippets[0]);
   attach_target_listeners();
@@ -10,7 +12,7 @@ $('.sample_start_button').on('click', function(e) {
 
 $('.overlaybox').on('click', function(e) {
   $('.overlay').toggleClass('active');
-  $('.content').toggleClass('smaller');
+  $('#carousel').toggleClass('smaller');
   // $('.trial_content').toggleClass('active');
   destroy_snippets();
 });

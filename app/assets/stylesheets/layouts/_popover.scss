@@ -4,32 +4,32 @@
   -o-transition: all 0.25s ease-out;
   transition: all 0.25s ease-out;
 }
-.intro {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background: #0082c8;
-}
-.intro .content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 80%;
-  margin: -6em -40% 0;
-  display: block;
-  text-align: center;
-}
-.intro .content h1 {
-  font-size: 3em;
-  margin: 0;
-  color: #FFF;
-}
-.intro .content h2 {
-  font-size: 2em;
-  font-weight: 100;
-  margin: 0 0 2em;
-  color: rgba(255, 255, 255, 0.5);
-}
+// .intro {
+//   position: absolute;
+//   height: 100%;
+//   width: 100%;
+//   // background: #0082c8;
+// }
+// .intro .content {
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   width: 80%;
+//   margin: -6em -40% 0;
+//   display: block;
+//   text-align: center;
+// }
+// .intro .content h1 {
+//   // font-size: 3em;
+//   // margin: 0;
+//   // color: #FFF;
+// }
+// .intro .content h2 {
+//   font-size: 2em;
+//   font-weight: 100;
+//   margin: 0 0 2em;
+//   color: rgba(255, 255, 255, 0.5);
+// }
 .overlay{
   opacity: 0;
   visibility: hidden;
