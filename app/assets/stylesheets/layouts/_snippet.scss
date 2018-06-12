@@ -1,0 +1,55 @@
+.snippet_container {
+  // Base layer - holds layout
+  // display: flex;
+  position: relative;
+  background-color: #CCCCCC;
+  height: 250px;
+  width: 90vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.snippet_content{
+  text-align: center;
+  top: 35%;
+  width: 70%;
+}
+
+.snippet_content p {
+  color: white;
+  font-family: Raleway;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.snippet_no {
+  position: absolute;
+  text-align: center;
+  bottom: 10%;
+  color: white;
+  font-family: Raleway;
+  font-size: 10px;
+}
+
+.next_target {
+  position: absolute;
+  height: 100%;
+  width: 30px;
+  background-color: #FFFFFF;
+  opacity: 0.4;
+  top: 0px;
+}
+
+.target_right {
+  right: 0px;
+}
+
+.target_left {
+  left: 0px;
+}
+
+.snippet_hidden {
+  display: none;
+}
