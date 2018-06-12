@@ -145,8 +145,19 @@ html, body, main {
   }
 }
 
+.click-me {
+  z-index: 1000;
+  left: 50%;
+  height: 290px;
+  width: 290px;
+  transform: translateY(20px) translateX(-50%);
+  background-color: yellow;
+  position: absolute;
+}
 
-
+.click_me_container {
+  position: relative;
+}
 
 
 
