@@ -10,6 +10,7 @@ gem 'puma'
 gem 'rails', '5.2.0'
 gem 'redis'
 gem 'news-api'
+gem 'aylien_news_api', :git => 'https://github.com/AYLIEN/aylien_newsapi_ruby.git'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
