@@ -1,0 +1,2 @@
+class AylienSource < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class AylienHashtag < ApplicationRecord
+end

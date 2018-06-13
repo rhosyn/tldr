@@ -1,0 +1,2 @@
+class AylienCategory < ApplicationRecord
+end
