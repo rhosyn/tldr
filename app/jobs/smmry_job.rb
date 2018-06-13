@@ -1,8 +1,10 @@
 require 'open-uri'
 require 'json'
 
-class Smmry
-  def summarize
+class SmmryJob < ApplicationJob
+  queue_as :smmry
+
+  def perform()
     Article.all.each do |a|
       if a.smmry_content != nil?
         news_url = a.newsapi_articleurl
@@ -13,10 +15,8 @@ class Smmry
         a.smmry_charcount = smmry["sm_api_character_count"]
         a.smmry_contentreduced = smmry["sm_api_content_reduced"]
         a.save
-        puts "SMMARY generated for Article ID: #{a.id}"
         sleep(11)
       end
     end
   end
-
 end
