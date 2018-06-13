@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_12_144258) do
+ActiveRecord::Schema.define(version: 2018_06_13_103346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "article_categories", force: :cascade do |t|
+    t.bigint "aylien_category_id"
+    t.bigint "aylien_article_id"
+    t.string "confident"
+    t.float "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aylien_article_id"], name: "index_article_categories_on_aylien_article_id"
+    t.index ["aylien_category_id"], name: "index_article_categories_on_aylien_category_id"
+  end
+
+  create_table "article_hashtags", force: :cascade do |t|
+    t.bigint "aylien_hashtag_id"
+    t.bigint "aylien_article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aylien_article_id"], name: "index_article_hashtags_on_aylien_article_id"
+    t.index ["aylien_hashtag_id"], name: "index_article_hashtags_on_aylien_hashtag_id"
+  end
 
   create_table "articles", force: :cascade do |t|
     t.string "newsapi_title"
@@ -34,6 +54,71 @@ ActiveRecord::Schema.define(version: 2018_06_12_144258) do
     t.string "newsapi_source_id"
   end
 
+  create_table "aylien_article_keywords", force: :cascade do |t|
+    t.bigint "aylien_keyword_id"
+    t.bigint "aylien_article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aylien_article_id"], name: "index_aylien_article_keywords_on_aylien_article_id"
+    t.index ["aylien_keyword_id"], name: "index_aylien_article_keywords_on_aylien_keyword_id"
+  end
+
+  create_table "aylien_articles", force: :cascade do |t|
+    t.integer "aylien_article_id"
+    t.string "title"
+    t.text "summary_sentences"
+    t.bigint "aylien_source_id"
+    t.string "img_url"
+    t.string "video_url"
+    t.string "title_polarity_sentiment"
+    t.float "title_polarity_score"
+    t.string "body_polarity_sentiment"
+    t.float "body_polarity_score"
+    t.datetime "published_at"
+    t.string "article_url"
+    t.string "related_stories_url"
+    t.string "coverages_url"
+    t.integer "fb_shares"
+    t.integer "li_shares"
+    t.integer "goog_shares"
+    t.integer "reddit_shares"
+    t.string "cluster_name"
+    t.text "cluster_stories"
+    t.float "cluster_score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aylien_source_id"], name: "index_aylien_articles_on_aylien_source_id"
+  end
+
+  create_table "aylien_categories", force: :cascade do |t|
+    t.string "category"
+    t.string "iab"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "aylien_hashtags", force: :cascade do |t|
+    t.string "hashtag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "aylien_keywords", force: :cascade do |t|
+    t.string "keyword"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "aylien_sources", force: :cascade do |t|
+    t.integer "source_id"
+    t.string "source_name"
+    t.string "loc_country"
+    t.float "alexa_rank"
+    t.string "img_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -52,4 +137,11 @@ ActiveRecord::Schema.define(version: 2018_06_12_144258) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "article_categories", "aylien_articles"
+  add_foreign_key "article_categories", "aylien_categories"
+  add_foreign_key "article_hashtags", "aylien_articles"
+  add_foreign_key "article_hashtags", "aylien_hashtags"
+  add_foreign_key "aylien_article_keywords", "aylien_articles"
+  add_foreign_key "aylien_article_keywords", "aylien_keywords"
+  add_foreign_key "aylien_articles", "aylien_sources"
 end

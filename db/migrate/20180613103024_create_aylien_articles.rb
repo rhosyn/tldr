@@ -1,7 +1,7 @@
 class CreateAylienArticles < ActiveRecord::Migration[5.2]
   def change
     create_table :aylien_articles do |t|
-      t.int :aylien_article_id
+      t.integer :aylien_article_id
       t.string :title
       t.text :summary_sentences
       t.references :aylien_source, foreign_key: true
@@ -15,10 +15,10 @@ class CreateAylienArticles < ActiveRecord::Migration[5.2]
       t.string :article_url
       t.string :related_stories_url
       t.string :coverages_url
-      t.int :fb_shares
-      t.int :li_shares
-      t.int :goog_shares
-      t.int :reddit_shares
+      t.integer :fb_shares
+      t.integer :li_shares
+      t.integer :goog_shares
+      t.integer :reddit_shares
       t.string :cluster_name
       t.text :cluster_stories
       t.float :cluster_score
