@@ -151,15 +151,18 @@ html, body, main {
   height: 290px;
   width: 290px;
   transform: translateY(20px) translateX(-50%);
-  background-color: yellow;
   position: absolute;
+  top: -45%;
 }
 
 .click_me_container {
   position: relative;
+  top: 45%;
 }
 
-
+.click-me.active {
+  z-index: -1;
+}
 
 
 

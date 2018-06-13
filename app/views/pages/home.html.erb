@@ -1,14 +1,6 @@
-<% article = @articles.first %>
-<% article_snippets = article.smmry_content.gsub!("[","").gsub!("]","").split("\",").to_a %>
-<% article_snippets.select{ |s| s.strip[0] == "\""}.map!{|snippet| snippet.strip.gsub!("\"","")} %>
-
-
-
 <script>
-  var article_snippets = [<%= raw article_snippets.to_json %>];
+  var snippet_array = <%= raw @snippets.to_json %>
 </script>
-
-
 <div class="overlay">
   <div class="overlaycontainer">
     <div class="overlaybox">
@@ -17,24 +9,20 @@
   </div>
 </div>
 <main>
-
   <div class="click_me_container">
 
     <div class="click-me"></div>
     <div id="carousel">
-
       <% @articles.each do |a| %>
-      <div class="hideRight article" data-category="<%= a.newsapi_category %>">
+      <div class="hideRight article" data-category="<%= a.newsapi_category %>" id="<%= "article-id-#{a.id}" %>">
         <p class="headline"><%= "#{a.newsapi_title}" %></p>
-        <div class="card-image" style="background-image: url(<%= image_path("#{a.newsapi_imgeurl}") %>);">
-        </div>
+        <div class="card-image" style="background-image: url(<%= image_path("#{a.newsapi_imgeurl}") %>);"></div>
       </div>
       <% end %>
-
     </div>
   </div>
-<!--     </div>
-</div> -->
+
+
 
 
 
