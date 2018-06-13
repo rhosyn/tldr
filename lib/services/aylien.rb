@@ -16,7 +16,7 @@ opts = {
   :media_images_count_max => 5,
   :language => ['en'],
   :not_language => ['it', 'es'],
-  :sort_by => 'social_shares_count',
+  :sort_by => 'source.rankings.alexa.rank.US',
   :source_rankings_alexa_rank_min => 1,
   :source_rankings_alexa_rank_max => 170,
 
@@ -40,35 +40,35 @@ opts = {
 
 begin
   result = api_instance.list_stories(opts)
-  a = result.stories.first
-  puts "=========================="
-  puts "id = #{a.id}"
-  puts "=========================="
-  puts "title = #{a.title}"
-  puts "=========================="
-  puts "body = #{a.body}"
-  puts "=========================="
-  puts "summary = #{a.summary}"
-  puts "=========================="
-  puts "summary sentences = #{a.summary.sentences}"
-  puts "=========================="
-  puts "source name = #{a.source.name}"
-  puts "=========================="
-  puts "media = #{a.media}"
-  puts "=========================="
-  puts "sentiment = #{a.sentiment}"
-  puts "=========================="
-  puts "keywords = #{a.keywords}"
-  puts "=========================="
-  puts "language = #{a.language}"
-  puts "=========================="
-  puts "published_at = #{a.published_at}"
-  puts "=========================="
-  puts "links = #{a.links}"
+  # a = result.stories.first
+  # puts "=========================="
+  # puts "id = #{a.id}"
+  # puts "=========================="
+  # puts "title = #{a.title}"
+  # puts "=========================="
+  # puts "body = #{a.body}"
+  # puts "=========================="
+  # puts "summary = #{a.summary}"
+  # puts "=========================="
+  # puts "summary sentences = #{a.summary.sentences}"
+  # puts "=========================="
+  # puts "source name = #{a.source.name}"
+  # puts "=========================="
+  # puts "media = #{a.media}"
+  # puts "=========================="
+  # puts "sentiment = #{a.sentiment}"
+  # puts "=========================="
+  # puts "keywords = #{a.keywords}"
+  # puts "=========================="
+  # puts "language = #{a.language}"
+  # puts "=========================="
+  # puts "published_at = #{a.published_at}"
+  # puts "=========================="
+  # puts "links = #{a.links}"
   # puts result
-  # result.stories.each do |story|
-  # puts "#{story.title} / #{story.source.name}"
-  # end
+  result.stories.each do |story|
+  puts "#{story.title} / #{story.source.name}"
+  end
 rescue AylienNewsApi::ApiError => e
   puts "Exception when calling DefaultApi->list_stories: #{e}"
   puts e.response_body
