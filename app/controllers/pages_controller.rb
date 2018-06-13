@@ -16,3 +16,7 @@ class PagesController < ApplicationController
 
 end
 
+# @articles = AylienArticle.all
+# @articles.each do |a|
+#   article_snippets = a.summary_sentences.gsub(/\"/, "").gsub(/\\/, "").tr("[","").tr("]","").split(",")
+

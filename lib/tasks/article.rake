@@ -3,6 +3,7 @@ namespace :article do
   task pull_new_articles: :environment do
     NewsApiJob.perform_now
     SmmryJob.perform_later
+    # AylienApiJob.perform_now
   end
 
 end
