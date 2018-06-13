@@ -1,4 +1,4 @@
 class ArticleHashtag < ApplicationRecord
-  belongs_to :hashtag
-  belongs_to :aylien_source
+  belongs_to :aylien_hashtag
+  belongs_to :aylien_article
 end
