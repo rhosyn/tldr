@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :index]
 
   def home
-    @aylien_articles = AylienArticle.all
+    @aylien_articles = AylienArticle.all.reject {|a| a.summary_sentences == "[]"}
     @aylien_snippets = {}
     @aylien_articles.each do |aylien|
       ay_snip = aylien.summary_sentences.gsub!("[","").gsub!("]","")
