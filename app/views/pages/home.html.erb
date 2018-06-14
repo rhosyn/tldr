@@ -1,6 +1,8 @@
 <script>
-  var snippet_array = <%= raw @aylien_snippets.to_json %>
+  var snippet_array = <%= raw @aylien_snippets.to_json %>;
+  var article_array = <%= raw @frontend_articles.to_json %>;
 </script>
+
 <div class="overlay">
   <div class="overlaycontainer">
     <div class="overlaybox">
@@ -13,16 +15,6 @@
 
     <div class="click-me"></div>
     <div id="carousel">
-      <% @aylien_articles.each do |aylien| %>
-        <% cats = ArticleCategory.where(aylien_article: aylien) %>
-          <% if cats.select{|c| c.aylien_category.iab.length <= 5 } != [] %>
-          <% iab = cats.select{|c| c.aylien_category.iab.length <= 5 } %>
-          <div class="hideRight article" data-sentiment="<%= aylien.title_polarity_sentiment %>" data-category="<%= iab[0].aylien_category.category %>" id="<%= "article-id-#{aylien.id}" %>">
-            <p class="headline"><%= "#{aylien.title}" %></p>
-            <div class="card-image" style="background-image: url(<%= image_path("#{aylien.img_url}") %>);"></div>
-          </div>
-        <% end %>
-      <% end %>
     </div>
   </div>
 
@@ -45,3 +37,13 @@
 </main>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
+<!--         <#% @aylien_articles.each do |aylien| %>
+          <#% cats = ArticleCategory.where(aylien_article: aylien) %>
+            <#% if cats.select{|c| c.aylien_category.iab.length <= 5 } != [] %>
+            <#% iab = cats.select{|c| c.aylien_category.iab.length <= 5 } %> -->
+            <!-- <div class="hideRight article" data-sentiment="<%#= aylien.title_polarity_sentiment %>" data-category="<%#= iab[0].aylien_category.category %>" id="<%#= "article-id-#{aylien.id}" %>"> -->
+              <!-- <p class="headline"><%#= "#{aylien.title}" %></p>
+              <div class="card-image" style="background-image: url(<%#= image_path("#{aylien.img_url}") %>);"></div>
+            </div>
+          <#% end %>
+        <#% end %> -->
