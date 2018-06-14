@@ -106,6 +106,8 @@ function moveToSelected(element) {
 
     $(prev).removeClass().addClass("prev");
     $(next).removeClass().addClass("next");
+    document.querySelector(".selected p").classList.remove("prev");
+    document.querySelector(".selected div").classList.remove("selected");
 
     $(nextSecond).removeClass().addClass("nextRightSecond");
     $(prevSecond).removeClass().addClass("prevLeftSecond");
