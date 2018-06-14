@@ -8,7 +8,7 @@ function attach_target_listeners() {
 }
 
 function generate_snippets() {
-  const active_card_id = parseInt(document.querySelector('.selected').id.replace('article-id-',''), 10);
+  const active_card_id = parseInt(document.querySelector('.selected').id, 10);
   const article_snippets = snippet_array[active_card_id];
   console.log(article_snippets)
   const size = article_snippets.length;
