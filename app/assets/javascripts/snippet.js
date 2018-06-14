@@ -9,6 +9,7 @@ function attach_target_listeners() {
 
 function generate_snippets() {
   const active_card_id = parseInt(document.querySelector('.selected').id.replace('article-id-',''), 10);
+  ahoy.track('article_click', {article_id: active_card_id});
   const article_snippets = snippet_array[active_card_id];
   console.log(article_snippets)
   const size = article_snippets.length;
@@ -74,6 +75,9 @@ function next_snippet() {
 }
 
 function destroy_snippets() {
+  const active_card_id = parseInt(document.querySelector('.selected').id.replace('article-id-',''), 10);
+  current_snippet = parseInt(document.querySelector(".snippet_active").id.replace('snippet-',''), 10);
+  ahoy.track('snippet_destroy', {article_id: active_card_id, snippet_no: current_snippet});
   document.querySelectorAll('.snippet_container').forEach((snippet) => {
     console.log(snippet);
     snippet.remove();
