@@ -13,11 +13,10 @@ class AylienApiJob < ApplicationJob
 
     opts = {
       :categories_taxonomy => 'iab-qag',
-      :categories_id => ['IAB19'],
+      :categories_id => ['IAB1'],
       :published_at_start => "NOW-3DAYS",
       :published_at_end => "NOW",
       :media_images_count_min => 1,
-      :media_images_count_max => 5,
       :language => ['en'],
       :sort_by => 'source.rankings.alexa.rank.US',
       :source_rankings_alexa_rank_min => 1,
@@ -46,20 +45,23 @@ class AylienApiJob < ApplicationJob
       result.stories.each do |s|
         ay_article = AylienArticle.new(aylien_article_id: s.id,
                                   title: s.title,
-                                  summary_sentences: s.summary.sentences,
                                   img_url: s.media[0].url,
                                   body_polarity_sentiment: s.sentiment.body.polarity,
                                   body_polarity_score: s.sentiment.body.score,
                                   title_polarity_sentiment: s.sentiment.title.polarity,
                                   title_polarity_score: s.sentiment.title.score,
                                   published_at: s.published_at,
-                                  article_url: s.links.permalink,
                                   related_stories_url: s.links.related_stories,
                                   coverages_url: s.links.coverages,
                                   fb_shares: s.social_shares_count.facebook[0].count,
                                   li_shares: s.social_shares_count.linkedin[0].count,
                                   reddit_shares: s.social_shares_count.reddit[0].count,
                                   goog_shares: s.social_shares_count.google_plus[0].count)
+        if s.links.permalink.match(/&url=(?<url>\S[^&]*)/).nil?
+          ay_article.article_url = s.links.permalink
+        else
+          ay_article.article_url = s.links.permalink.match(/&url=(?<url>\S[^&]*)/)["url"]
+        end
         if AylienSource.where(source_name: s.source.name).empty?
           news_source = AylienSource.new(source_name: s.source.name,
                                 source_id: s.source.id,

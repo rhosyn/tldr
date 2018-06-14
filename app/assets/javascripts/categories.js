@@ -1,4 +1,10 @@
 const catButton = document.querySelectorAll(".btn-sm");
+const happyButton = document.getElementById("happy-button");
+
+happyButton.addEventListener('click', function () {
+  // console.log('hello');
+  happyButton.classList.toggle("happy");
+})
 
 catButton.forEach(function (btn) {
   btn.addEventListener('click', function() {
