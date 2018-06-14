@@ -1,7 +1,20 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home]
+  skip_before_action :authenticate_user!, only: [:home, :index]
 
   def home
+    @aylien_articles = AylienArticle.all
+    @aylien_snippets = {}
+    @aylien_articles.each do |aylien|
+      ay_snip = aylien.summary_sentences.gsub!("[","").gsub!("]","")
+      ay_snip.gsub!(/\\\"/, "") if ay_snip.match(/\\\"/)
+      ay_snip.gsub!(/\"/, "") if ay_snip.match(/\"/)
+      aylien_snip = ay_snip.split(".,").to_a
+      aylien_snip.map!{|s| s.strip}
+      @aylien_snippets[aylien.id] = aylien_snip
+    end
+  end
+
+  def index
     @article = Article.first
     @articles = Article.all
     @snippets = {}
@@ -14,9 +27,6 @@ class PagesController < ApplicationController
     end
   end
 
-end
 
-# @articles = AylienArticle.all
-# @articles.each do |a|
-#   article_snippets = a.summary_sentences.gsub(/\"/, "").gsub(/\\/, "").tr("[","").tr("]","").split(",")
+end
 

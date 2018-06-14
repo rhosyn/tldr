@@ -11,7 +11,7 @@ class Aylien
 
     opts = {
       :categories_taxonomy => 'iab-qag',
-      :categories_id => ['IAB1'],
+      :categories_id => ['IAB19'],
       :published_at_start => "NOW-3DAYS",
       :published_at_end => "NOW",
       :media_images_count_min => 1,

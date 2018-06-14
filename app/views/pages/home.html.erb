@@ -1,5 +1,5 @@
 <script>
-  var snippet_array = <%= raw @snippets.to_json %>
+  var snippet_array = <%= raw @aylien_snippets.to_json %>
 </script>
 <div class="overlay">
   <div class="overlaycontainer">
@@ -13,14 +13,30 @@
 
     <div class="click-me"></div>
     <div id="carousel">
-      <% @articles.each do |a| %>
-      <div class="hideRight article" data-category="<%= a.newsapi_category %>" id="<%= "article-id-#{a.id}" %>">
-        <p class="headline"><%= "#{a.newsapi_title}" %></p>
-        <div class="card-image" style="background-image: url(<%= image_path("#{a.newsapi_imgeurl}") %>);"></div>
-      </div>
+      <% @aylien_articles.each do |aylien| %>
+        <% cats = ArticleCategory.where(aylien_article: aylien) %>
+          <% if aylien.summary_sentences != "[]" && cats.select{|c| c.aylien_category.iab.length == 4} != [] %>
+          <% iab = cats.select{|c| c.aylien_category.iab.length == 4 } %>
+          <div class="hideRight article" data-category="<%= iab[0].aylien_category.category %>" id="<%= "article-id-#{aylien.id}" %>">
+            <p class="headline"><%= "#{aylien.title}" %></p>
+            <div class="card-image" style="background-image: url(<%= image_path("#{aylien.img_url}") %>);"></div>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
+
+
+<div class="footer fixed-bottom footer-links">
+  <button type="button" class="btn btn-secondary btn-sm" data-category="general"><i class="fas fa-home"></i></i></button>
+  <button type="button" class="btn btn-secondary btn-sm" data-category="business"><i class="fas fa-briefcase"></i></button>
+  <button type="button" class="btn btn-secondary btn-sm" data-category="science"><i class="fas fa-flask"></i></button>
+  <button type="button" class="btn btn-secondary btn-sm" data-category="technology & computing"><i class="fas fa-mobile-alt"></i></button>
+  <button type="button" class="btn btn-secondary btn-sm" data-category="Arts & Entertainment"><i class="fas fa-film"></i></button>
+  <button type="button" class="btn btn-secondary btn-sm" data-category="Health & Fitness"><i class="fas fa-heartbeat"></i></i></button>
+  <button type="button" class="btn btn-secondary btn-sm" data-category="sports"><i class="fas fa-futbol"></i></button>
+</div>
+
 
 
 

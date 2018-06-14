@@ -13,7 +13,7 @@ class AylienApiJob < ApplicationJob
 
     opts = {
       :categories_taxonomy => 'iab-qag',
-      :categories_id => ['IAB1'],
+      :categories_id => ['IAB19'],
       :published_at_start => "NOW-3DAYS",
       :published_at_end => "NOW",
       :media_images_count_min => 1,
@@ -21,7 +21,7 @@ class AylienApiJob < ApplicationJob
       :language => ['en'],
       :sort_by => 'source.rankings.alexa.rank.US',
       :source_rankings_alexa_rank_min => 1,
-      :source_rankings_alexa_rank_max => 250,
+      :source_rankings_alexa_rank_max => 200,
       :per_page => 10
     }
 
