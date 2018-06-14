@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_14_102909) do
+ActiveRecord::Schema.define(version: 2018_06_14_134039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,14 @@ ActiveRecord::Schema.define(version: 2018_06_14_102909) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "newsapi_source_id"
+  end
+
+  create_table "aylien_article_batches", force: :cascade do |t|
+    t.integer "batch_id"
+    t.bigint "aylien_article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aylien_article_id"], name: "index_aylien_article_batches_on_aylien_article_id"
   end
 
   create_table "aylien_article_keywords", force: :cascade do |t|
@@ -178,6 +186,7 @@ ActiveRecord::Schema.define(version: 2018_06_14_102909) do
   add_foreign_key "article_categories", "aylien_categories"
   add_foreign_key "article_hashtags", "aylien_articles"
   add_foreign_key "article_hashtags", "aylien_hashtags"
+  add_foreign_key "aylien_article_batches", "aylien_articles"
   add_foreign_key "aylien_article_keywords", "aylien_articles"
   add_foreign_key "aylien_article_keywords", "aylien_keywords"
   add_foreign_key "aylien_articles", "aylien_sources"
