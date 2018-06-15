@@ -126,9 +126,8 @@ html, body, main {
 .card-image {
   height: 100%;
   width: 100%;
-  background-position: 50%;
+  background-position: 48%;
   background-size:cover;
-  // pointer-events: none;
   clip-path: ellipse(77% 50% at 62% 25%);
   border-radius: 2px;
 }
@@ -175,7 +174,7 @@ html, body, main {
 }
 
 .article {
-  box-shadow: 0 1px 5px rgba(0,0,0,0.9);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
   border-radius: 2px;
 }
 
@@ -185,7 +184,7 @@ html, body, main {
     left: 0;
     background-color: blue;
     color: white;
-    padding: 0.8em;
+    padding: 0.7em;
     z-index: 1;
     span {
       display: block;
@@ -193,7 +192,7 @@ html, body, main {
     }
     .day {
       font-weight: 700;
-      font-size: 24px;
+      font-size: 18px;
       text-shadow: 2px 3px 2px rgba(black, 0.18);
     }
     .month {
