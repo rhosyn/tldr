@@ -394,3 +394,7 @@ AylienCategory.create!(iab: "IAB26-3", category: "Spyware/Malware")
 AylienCategory.create!(iab: "IAB26-4", category: "CopyrightInfringement")
 
 puts "All done!"
+
+puts "Creating user..."
+u1 = User.create!(email: '1@1.com', password: '123456')
+puts "Created 1 user"
