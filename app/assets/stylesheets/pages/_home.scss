@@ -128,7 +128,7 @@ html, body, main {
   width: 100%;
   background-position: 50%;
   background-size:cover;
-  pointer-events: none;
+  // pointer-events: none;
   clip-path: ellipse(77% 50% at 62% 25%);
 }
 
@@ -163,6 +163,10 @@ html, body, main {
 
 .click-me.active {
   z-index: -1;
+}
+
+#happy-button.happy {
+  background-color:yellow;
 }
 
 
