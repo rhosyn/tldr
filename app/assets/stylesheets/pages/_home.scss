@@ -130,6 +130,7 @@ html, body, main {
   background-size:cover;
   // pointer-events: none;
   clip-path: ellipse(77% 50% at 62% 25%);
+  border-radius: 2px;
 }
 
 .visible {
@@ -172,6 +173,37 @@ html, body, main {
 .happy-heading {
   color: white;
 }
+
+.article {
+  box-shadow: 0 1px 5px rgba(0,0,0,0.9);
+  border-radius: 2px;
+}
+
+.date {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: blue;
+    color: white;
+    padding: 0.8em;
+    z-index: 1;
+    span {
+      display: block;
+      text-align: center;
+    }
+    .day {
+      font-weight: 700;
+      font-size: 24px;
+      text-shadow: 2px 3px 2px rgba(black, 0.18);
+    }
+    .month {
+      text-transform: uppercase;
+    }
+    .month,
+    .year {
+      font-size: 12px;
+    }
+  }
 
 
 

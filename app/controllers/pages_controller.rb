@@ -13,7 +13,10 @@ class PagesController < ApplicationController
                         title: article.title,
                         image_url: article.img_url,
                         category: iab[0].aylien_category.category,
-                        sentiment: article.title_polarity_sentiment
+                        sentiment: article.title_polarity_sentiment,
+                        day: article.published_at.day,
+                        month: Date::MONTHNAMES[article.published_at.month],
+                        year: article.published_at.year
                         }
         @frontend_articles << carousel_item
       end
