@@ -17,6 +17,7 @@ class Aylien
         :published_at_end => "NOW",
         :media_images_count_min => 1,
         :language => ['en'],
+        :not_source_scopes_level => ["local"],
         :sort_by => 'source.rankings.alexa.rank.US',
         :source_rankings_alexa_rank_min => 1,
         :source_rankings_alexa_rank_max => 200,
