@@ -1,7 +1,7 @@
 require 'aylien_news_api'
 
-class AylienApiJob < ApplicationJob
-  queue_as :aylien_api
+class AylienHappyJob < ApplicationJob
+  queue_as :default
 
   def perform
     AylienNewsApi.configure do |config|
@@ -13,19 +13,19 @@ class AylienApiJob < ApplicationJob
     categories = %w(IAB1 IAB3 IAB7 IAB15 IAB17 IAB19)
     categories.each do |category|
       opts = {
-        :categories_taxonomy => 'iab-qag',
-        :categories_id => [category],
-        :published_at_start => "NOW-3DAYS",
+        :published_at_start => "NOW-10DAYS",
         :published_at_end => "NOW",
         :media_images_count_min => 1,
+        :sentiment_title_polarity => "positive",
+        :sentiment_body_polarity => "positive",
+        :sort_by => 'social_shares_count',
+        :sort_direction => "desc",
         :language => ['en'],
         :not_source_scopes_level => ["local"],
-        :sort_by => 'source.rankings.alexa.rank.US',
         :source_rankings_alexa_rank_min => 1,
-        :source_rankings_alexa_rank_max => 200,
-        :per_page => 10
+        :source_rankings_alexa_rank_max => 250,
+        :per_page => 20
       }
-
 
       begin
         result = api_instance.list_stories(opts)
@@ -108,21 +108,7 @@ class AylienApiJob < ApplicationJob
         puts "Element already exists"
       end
     end
+
+
   end
 end
-
-    # :source_locations_country => ['IN']
-    # :title => 'trump',
-    # :sort_by => 'source.rankings.alexa.rank.US'
-    # :sort_by => 'social_shares_count' includes facebook, LI, Reddit and Google+
-
-    # ranks websites based on the volume of traffic they have generated over the previous 3 months
-    # Google.com has a ranking of 1, BBC.co.uk has a ranking of around 100, and so on.
-
-    # Categories
-    # ['IAB1'] = arts & entertainment
-    # ['IAB3'] = business
-    # ['IAB7'] = Health and fitness
-    # ['IAB15'] = science
-    # ['IAB17'] = sports
-    # ['IAB19'] = technology & computing

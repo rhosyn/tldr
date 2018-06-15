@@ -20,7 +20,7 @@
 
 
 <div class="footer fixed-bottom footer-links">
-  <button type="button" class="btn btn-secondary btn-sm" data-category="General"><i class="fas fa-home"></i></i></button>
+  <button type="button" class="btn btn-secondary btn-sm" id="happy-button"><i class="far fa-smile"></i></button>
   <button type="button" class="btn btn-secondary btn-sm" data-category="Business"><i class="fas fa-briefcase"></i></button>
   <button type="button" class="btn btn-secondary btn-sm" data-category="Science"><i class="fas fa-flask"></i></button>
   <button type="button" class="btn btn-secondary btn-sm" data-category="Technology & Computing"><i class="fas fa-mobile-alt"></i></button>
@@ -29,21 +29,6 @@
   <button type="button" class="btn btn-secondary btn-sm" data-category="Sports"><i class="fas fa-futbol"></i></button>
 </div>
 
-
-
-
-
-
 </main>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-<!--         <#% @aylien_articles.each do |aylien| %>
-          <#% cats = ArticleCategory.where(aylien_article: aylien) %>
-            <#% if cats.select{|c| c.aylien_category.iab.length <= 5 } != [] %>
-            <#% iab = cats.select{|c| c.aylien_category.iab.length <= 5 } %> -->
-            <!-- <div class="hideRight article" data-sentiment="<%#= aylien.title_polarity_sentiment %>" data-category="<%#= iab[0].aylien_category.category %>" id="<%#= "article-id-#{aylien.id}" %>"> -->
-              <!-- <p class="headline"><%#= "#{aylien.title}" %></p>
-              <div class="card-image" style="background-image: url(<%#= image_path("#{aylien.img_url}") %>);"></div>
-            </div>
-          <#% end %>
-        <#% end %> -->

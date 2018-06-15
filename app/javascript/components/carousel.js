@@ -4,32 +4,55 @@ const carousel = document.getElementById("carousel");
 
 happyButton.addEventListener('click', function () {
   happyButton.classList.toggle("happy");
+  // let happy_heading = document.createElement("h1");
+  // happy_heading.className = 'happy-heading';
+  // happy_heading.innerHTML = "Choose your category!";
+  // console.log(happy_heading);
+  // console.log(happyButton.classList);
+  // console.log(carousel);
+  // carousel.append(happy_heading);
 })
-
 
 catButton.forEach(function (btn) {
   btn.addEventListener('click', function() {
     carousel.innerHTML = "";
     article_array.forEach(function (a) {
-      if (a.category == btn.dataset.category) {
-        let hide_article = document.createElement("div");
-        hide_article.className = 'hideRight article';
-        hide_article.id = a.id;
-        hide_article.dataset.sentiment = a.sentiment;
-        hide_article.dataset.category = a.category;
-        let title_p = document.createElement("p");
-        title_p.innerHTML = a.title;
-        title_p.className = 'headline';
-        hide_article.appendChild(title_p);
-        let card_image = document.createElement("div");
-        card_image.className = 'card-image';
-        card_image.style.backgroundImage = "url(" + a.image_url + ")";
-        hide_article.appendChild(card_image);
-        carousel.appendChild(hide_article);
+      if (happyButton.classList.contains("happy")) {
+        if ((a.category == btn.dataset.category) && (a.sentiment == "positive" )) {
+          let hide_article = document.createElement("div");
+          hide_article.className = 'hideRight article';
+          hide_article.id = a.id;
+          hide_article.dataset.sentiment = a.sentiment;
+          hide_article.dataset.category = a.category;
+          let title_p = document.createElement("p");
+          title_p.innerHTML = a.title;
+          title_p.className = 'headline';
+          hide_article.appendChild(title_p);
+          let card_image = document.createElement("div");
+          card_image.className = 'card-image';
+          card_image.style.backgroundImage = "url(" + a.image_url + ")";
+          hide_article.appendChild(card_image);
+          carousel.appendChild(hide_article);
+        }
+      } else {
+          if (a.category == btn.dataset.category) {
+            let hide_article = document.createElement("div");
+            hide_article.className = 'hideRight article';
+            hide_article.id = a.id;
+            hide_article.dataset.sentiment = a.sentiment;
+            hide_article.dataset.category = a.category;
+            let title_p = document.createElement("p");
+            title_p.innerHTML = a.title;
+            title_p.className = 'headline';
+            hide_article.appendChild(title_p);
+            let card_image = document.createElement("div");
+            card_image.className = 'card-image';
+            card_image.style.backgroundImage = "url(" + a.image_url + ")";
+            hide_article.appendChild(card_image);
+            carousel.appendChild(hide_article);
+          }
       }
     })
-    // let next = document.querySelector(".next")
-    //   .addEventListener('click', function () {moveToSelected('next');});
     catButton.forEach(function (cb) {
       cb.classList.remove("selected");
     })
@@ -52,20 +75,11 @@ catButton.forEach(function (btn) {
       a.classList.remove("prevLeftSecond");
       a.classList.remove("hideRight");
       a.classList.remove("hideLeft");
-      if (happyButton.classList.contains("happy")) {
-        if ((a.dataset.category == btn.dataset.category) && (a.dataset.sentiment == "positive" )) {
-          a.classList.remove("hidden");
-          a.classList.add("visible");
-        } else {
-          a.classList.add("hidden");
-        }
+      if (a.dataset.category == btn.dataset.category) {
+      a.classList.remove("hidden");
+      a.classList.add("visible");
       } else {
-        if (a.dataset.category == btn.dataset.category) {
-        a.classList.remove("hidden");
-        a.classList.add("visible");
-        } else {
-        a.classList.add("hidden");
-        }
+      a.classList.add("hidden");
       }
     });
     let visArticles = document.querySelectorAll(".visible");
