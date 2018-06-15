@@ -62,3 +62,49 @@
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
 }
+
+.hamburger {
+  top: 12px;
+  cursor: pointer;
+  margin: 0 auto;
+  padding-left: 1.25em;
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+.hamburger-global {
+  // backface-visibility: hidden;
+  position: absolute;
+  left: 12px;
+  border-top: 3px solid gray;
+  width: 70%;
+  transition: 0.55s;
+}
+.hamburger-top {
+  top: 0;
+}
+.hamburger-middle {
+  top: 7px;
+}
+.hamburger-bottom {
+  top: 14px;
+}
+.hamburger-top-click {
+  // backface-visibility: hidden;
+  top: 8px;
+  left: 40%;
+  transform: rotate(50deg);
+  transition: 0.55s 0.5s;
+  width: 40%;
+}
+.hamburger-middle-click {
+  opacity: 0;
+}
+.hamburger-bottom-click {
+  // backface-visibility: hidden;
+  top: 8px;
+  left: 40%;
+  transform: rotate(-410deg);
+  transition: 0.55s 0.5s;
+  width: 40%;
+}
