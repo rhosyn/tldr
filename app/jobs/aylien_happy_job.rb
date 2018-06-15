@@ -39,11 +39,11 @@ class AylienHappyJob < ApplicationJob
                                     title_polarity_score: s.sentiment.title.score,
                                     published_at: s.published_at,
                                     related_stories_url: s.links.related_stories,
-                                    coverages_url: s.links.coverages,
-                                    fb_shares: s.social_shares_count.facebook[0].count,
-                                    li_shares: s.social_shares_count.linkedin[0].count,
-                                    reddit_shares: s.social_shares_count.reddit[0].count,
-                                    goog_shares: s.social_shares_count.google_plus[0].count)
+                                    coverages_url: s.links.coverages)
+          ay_article.fb_shares = s.social_shares_count.facebook[0].count if s.social_shares_count.facebook[0]
+          ay_article.li_shares = s.social_shares_count.linkedin[0].count if s.social_shares_count.linkedin[0]
+          ay_article.reddit_shares = s.social_shares_count.reddit[0].count if s.social_shares_count.reddit[0]
+          ay_article.goog_shares = s.social_shares_count.google_plus[0].count if s.social_shares_count.google_plus[0]
           if s.links.permalink.match(/&url=(?<url>\S[^&]*)/).nil?
             ay_article.article_url = s.links.permalink
           else
