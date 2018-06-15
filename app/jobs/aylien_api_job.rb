@@ -23,7 +23,7 @@ class AylienApiJob < ApplicationJob
         :sort_by => 'source.rankings.alexa.rank.US',
         :source_rankings_alexa_rank_min => 1,
         :source_rankings_alexa_rank_max => 200,
-        :per_page => 10
+        :per_page => 20
       }
 
 

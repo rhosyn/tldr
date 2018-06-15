@@ -24,6 +24,7 @@ var Hamburger = {
 
   activateHamburger: function() {
     Hamburger.el.hamburgerTop.toggleClass('hamburger-top-click');
+    // Hamburger.el.hamburgerTop.toggleClass('dropdown-toggle');
     Hamburger.el.hamburgerMiddle.toggleClass('hamburger-middle-click');
     Hamburger.el.hamburgerBottom.toggleClass('hamburger-bottom-click');
   }

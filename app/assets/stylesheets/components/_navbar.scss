@@ -34,7 +34,7 @@
 
 /* Dropdown menu */
 .navbar-wagon-dropdown-menu {
-  margin-top: 15px;
+  margin-top: -14px;
   box-shadow: 1px 1px 4px #E6E6E6;
   border-color: #E6E6E6;
 }
@@ -44,7 +44,8 @@
   color: #999999 !important;
   font-size: 15px !important;
   line-height: 22px !important;
-  padding: 10px 20px;
+  padding: 5px;
+  font-family: Raleway;
 }
 .navbar-wagon-dropdown-menu li > a:hover {
   background: transparent !important;
