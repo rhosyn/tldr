@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_14_134039) do
+ActiveRecord::Schema.define(version: 2018_06_14_134336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,11 +92,13 @@ ActiveRecord::Schema.define(version: 2018_06_14_134039) do
   end
 
   create_table "aylien_article_batches", force: :cascade do |t|
-    t.integer "batch_id"
+    t.bigint "batch_id"
     t.bigint "aylien_article_id"
+    t.integer "article_sequence_no"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["aylien_article_id"], name: "index_aylien_article_batches_on_aylien_article_id"
+    t.index ["batch_id"], name: "index_aylien_article_batches_on_batch_id"
   end
 
   create_table "aylien_article_keywords", force: :cascade do |t|
@@ -106,6 +108,15 @@ ActiveRecord::Schema.define(version: 2018_06_14_134039) do
     t.datetime "updated_at", null: false
     t.index ["aylien_article_id"], name: "index_aylien_article_keywords_on_aylien_article_id"
     t.index ["aylien_keyword_id"], name: "index_aylien_article_keywords_on_aylien_keyword_id"
+  end
+
+  create_table "aylien_article_user_batches", force: :cascade do |t|
+    t.bigint "batch_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["batch_id"], name: "index_aylien_article_user_batches_on_batch_id"
+    t.index ["user_id"], name: "index_aylien_article_user_batches_on_user_id"
   end
 
   create_table "aylien_articles", force: :cascade do |t|
@@ -164,6 +175,16 @@ ActiveRecord::Schema.define(version: 2018_06_14_134039) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "batches", force: :cascade do |t|
+    t.string "batch_type"
+    t.bigint "aylien_category_id"
+    t.datetime "window_start"
+    t.datetime "window_end"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aylien_category_id"], name: "index_batches_on_aylien_category_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -187,7 +208,11 @@ ActiveRecord::Schema.define(version: 2018_06_14_134039) do
   add_foreign_key "article_hashtags", "aylien_articles"
   add_foreign_key "article_hashtags", "aylien_hashtags"
   add_foreign_key "aylien_article_batches", "aylien_articles"
+  add_foreign_key "aylien_article_batches", "batches"
   add_foreign_key "aylien_article_keywords", "aylien_articles"
   add_foreign_key "aylien_article_keywords", "aylien_keywords"
+  add_foreign_key "aylien_article_user_batches", "batches"
+  add_foreign_key "aylien_article_user_batches", "users"
   add_foreign_key "aylien_articles", "aylien_sources"
+  add_foreign_key "batches", "aylien_categories"
 end

@@ -1,4 +1,4 @@
 class AylienArticleUserBatch < ApplicationRecord
-  belongs_to :aylien_article_batch
-  belongs_to :user
+  belongs_to :batch, dependent: :destroy
+  belongs_to :user, dependent: :destroy
 end
