@@ -395,6 +395,8 @@ AylienCategory.create!(iab: "IAB26-4", category: "CopyrightInfringement")
 
 puts "All done!"
 
-puts "Creating user..."
+puts "Creating users..."
 u1 = User.create!(email: '1@1.com', password: '123456')
-puts "Created 1 user"
+u2 = User.create!(email: '2@2.com', password: '123456')
+u3 = User.create!(email: '3@3.com', password: '123456')
+puts "Created 3 users"

@@ -3,5 +3,6 @@
 :verbose: true
 :queues:  # Queue priority: https://github.com/mperham/sidekiq/wiki/Advanced-Options
   - aylien_api
-  - news_api
   - smmry
+  - create_batch
+  - news_api
