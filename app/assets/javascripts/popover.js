@@ -1,6 +1,5 @@
 
 $('.click-me').on('click', function(e) {
-  // console.log('hello');
   $('.overlay').toggleClass('active');
   $('#carousel').toggleClass('smaller');
   $('.click-me').toggleClass('active');

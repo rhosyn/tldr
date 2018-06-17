@@ -196,7 +196,7 @@ function moveToSelected(element) {
 
 function findClick() {
   $('#carousel div').click(function() {
-    console.log(this)
+    console.log(this);
     moveToSelected($(this));
   });
 
