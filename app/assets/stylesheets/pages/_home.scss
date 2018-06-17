@@ -126,10 +126,10 @@ html, body, main {
 .card-image {
   height: 100%;
   width: 100%;
-  background-position: 50%;
+  background-position: 48%;
   background-size:cover;
-  pointer-events: none;
   clip-path: ellipse(77% 50% at 62% 25%);
+  border-radius: 2px;
 }
 
 .visible {
@@ -163,6 +163,53 @@ html, body, main {
 
 .click-me.active {
   z-index: -1;
+}
+
+#happy-button.happy {
+  background-color:yellow;
+}
+
+.happy-heading {
+  color: white;
+}
+
+.article {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
+  border-radius: 2px;
+}
+
+.date {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: blue;
+    color: white;
+    padding: 0.7em;
+    z-index: 1;
+    span {
+      display: block;
+      text-align: center;
+    }
+    .day {
+      font-weight: 700;
+      font-size: 18px;
+      text-shadow: 2px 3px 2px rgba(black, 0.18);
+    }
+    .month {
+      text-transform: uppercase;
+    }
+    .month,
+    .year {
+      font-size: 12px;
+    }
+  }
+
+#canvas {
+  position: absolute;
+  top: 119px;
+  left: 38px;
+  width: 300px;
+  height: 412px;
 }
 
 
