@@ -4,13 +4,93 @@ const carousel = document.getElementById("carousel");
 
 happyButton.addEventListener('click', function () {
   happyButton.classList.toggle("happy");
-  // let happy_heading = document.createElement("h1");
-  // happy_heading.className = 'happy-heading';
-  // happy_heading.innerHTML = "Choose your category!";
-  // console.log(happy_heading);
-  // console.log(happyButton.classList);
-  // console.log(carousel);
-  // carousel.append(happy_heading);
+  happyButton.classList.add("i-am-selected");
+  carousel.innerHTML = "";
+  if (happyButton.classList.contains("happy")) {
+    happy_array.forEach(function (happy) {
+
+      let hide_article = document.createElement("div");
+      hide_article.className = 'hideRight article';
+      hide_article.id = happy.id;
+      hide_article.dataset.title_sentiment = happy.title_sentiment;
+      hide_article.dataset.body_sentiment = happy.body_sentiment;
+      hide_article.dataset.category = happy.category;
+      let date_div = document.createElement("div");
+      date_div.className = 'date';
+      let day_span = document.createElement("span");
+      day_span.className = 'day';
+      day_span.innerHTML = happy.day;
+      let month_span = document.createElement("span");
+      month_span.className = 'month';
+      month_span.innerHTML = happy.month;
+      let year_span = document.createElement("span");
+      year_span.className = 'year';
+      year_span.innerHTML = happy.year;
+      date_div.appendChild(day_span);
+      date_div.appendChild(month_span);
+      date_div.appendChild(year_span);
+      let title_p = document.createElement("p");
+      title_p.innerHTML = happy.title;
+      title_p.className = 'headline';
+      hide_article.appendChild(date_div);
+      hide_article.appendChild(title_p);
+      let card_image = document.createElement("div");
+      card_image.className = 'card-image';
+      card_image.style.backgroundImage = "url(" + happy.image_url + ")";
+      hide_article.appendChild(card_image);
+      carousel.appendChild(hide_article);
+
+      // let hide_article = document.createElement("div");
+      // hide_article.className = 'hideRight article';
+      // hide_article.id = happy.id;
+      // hide_article.dataset.title_sentiment = happy.title_polarity_sentiment;
+      // hide_article.dataset.body_sentiment = happy.body_polarity_sentiment;
+      // let title_p = document.createElement("p");
+      // title_p.innerHTML = happy.title;
+      // title_p.className = 'headline';
+      // hide_article.appendChild(title_p);
+      // let card_image = document.createElement("div");
+      // card_image.className = 'card-image';
+      // card_image.style.backgroundImage = "url(" + happy.img_url + ")";
+      // hide_article.appendChild(card_image);
+      // carousel.appendChild(hide_article);
+    })
+  }
+  let articles = document.querySelectorAll(".article");
+    articles.forEach(function (a) {
+      a.classList.remove("visible");
+      a.classList.remove("selected");
+      a.classList.remove("next");
+      a.classList.remove("nextRightSecond");
+      a.classList.remove("prev");
+      a.classList.remove("prevLeftSecond");
+      a.classList.remove("hideRight");
+      a.classList.remove("hideLeft");
+      a.classList.remove("hidden");
+      a.classList.add("visible");
+    });
+    let visArticles = document.querySelectorAll(".visible");
+    let selected = visArticles[0];
+    let next = visArticles[1];
+    let nextRightSecond = visArticles[2];
+    selected.classList.add("selected");
+    next.classList.add("next");
+    nextRightSecond.classList.add("nextRightSecond");
+    visArticles.forEach(function(artic, i) {
+      if (i > 2) {
+        artic.classList.add("hideRight");
+      }
+    });
+    // visArticles.forEach(function(v) {
+    //   console.log(v.children[0]);
+    //   // v.children[0].classList.remove();
+    //   // v.children[0].classList.add("date");
+    //   // v.children[1].classList.remove();
+    //   // v.children[1].classList.add("headline");
+    //   // v.children[2].classList.remove();
+    //   // v.children[2].classList.add("card-image");
+    // })
+    findClick();
 })
 
 catButton.forEach(function (btn) {
@@ -18,11 +98,12 @@ catButton.forEach(function (btn) {
     carousel.innerHTML = "";
     article_array.forEach(function (a) {
       if (happyButton.classList.contains("happy")) {
-        if ((a.category == btn.dataset.category) && (a.sentiment == "positive" )) {
+        if ((a.category == btn.dataset.category) && (a.title_sentiment == "positive" ) && (a.body_sentiment == "positive" )) {
           let hide_article = document.createElement("div");
           hide_article.className = 'hideRight article';
           hide_article.id = a.id;
-          hide_article.dataset.sentiment = a.sentiment;
+          hide_article.dataset.title_sentiment = a.title_sentiment;
+          hide_article.dataset.body_sentiment = a.body_sentiment;
           hide_article.dataset.category = a.category;
           let date_div = document.createElement("div");
           date_div.className = 'date';
@@ -84,9 +165,9 @@ catButton.forEach(function (btn) {
       }
     })
     catButton.forEach(function (cb) {
-      cb.classList.remove("selected");
+      cb.classList.remove("i-am-selected");
     })
-    btn.classList.add("selected")
+    btn.classList.add("i-am-selected")
       if (carousel.children[0].classList.contains("article")) {
 
       } else {
@@ -115,10 +196,12 @@ catButton.forEach(function (btn) {
     let visArticles = document.querySelectorAll(".visible");
     let selected = visArticles[0];
     let next = visArticles[1];
-    let nextRightSecond = visArticles[2];
     selected.classList.add("selected");
     next.classList.add("next");
-    nextRightSecond.classList.add("nextRightSecond");
+    if (visArticles.length > 2) {
+      let nextRightSecond = visArticles[2];
+      nextRightSecond.classList.add("nextRightSecond");
+    }
     visArticles.forEach(function(artic, i) {
       if (i > 2) {
         artic.classList.add("hideRight");
@@ -172,9 +255,20 @@ function moveToSelected(element) {
     $(prevSecond).prevAll().removeClass().addClass('hideLeft');
 
     let car = document.getElementById("carousel");
+    let btnSelected = document.querySelector(".btn.i-am-selected");
+    let catBtn = document.querySelector(".btn.btn-sm.i-am-selected");
     Array.from(car.children).forEach(function (ch) {
-      let btnSelected = document.querySelector(".btn-sm.selected");
-      if (ch.dataset.category == btnSelected.dataset.category) {
+      if (btnSelected.classList.contains("happy")) {
+        ch.classList.remove();
+        ch.classList.add("visible");
+        ch.classList.add("article");
+        ch.children[0].classList.remove();
+        ch.children[0].classList.add("date");
+        ch.children[1].classList.remove();
+        ch.children[1].classList.add("headline");
+        ch.children[2].classList.remove();
+        ch.children[2].classList.add("card-image");
+      } else if (ch.dataset.category == catBtn.dataset.category) {
         ch.classList.remove();
         ch.classList.add("visible");
         ch.classList.add("article");
@@ -196,7 +290,7 @@ function moveToSelected(element) {
 
 function findClick() {
   $('#carousel div').click(function() {
-    console.log(this)
+    console.log(this);
     moveToSelected($(this));
   });
 

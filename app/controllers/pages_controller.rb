@@ -13,12 +13,30 @@ class PagesController < ApplicationController
                         title: article.title,
                         image_url: article.img_url,
                         category: iab[0].aylien_category.category,
-                        sentiment: article.title_polarity_sentiment,
+                        title_sentiment: article.title_polarity_sentiment,
+                        body_sentiment: article.title_polarity_sentiment,
                         day: article.published_at.day,
                         month: Date::MONTHNAMES[article.published_at.month],
                         year: article.published_at.year
                         }
         @frontend_articles << carousel_item
+      end
+      hp = AylienArticle.where(:title_polarity_sentiment => 'positive', :body_polarity_sentiment => 'positive')
+      @happy_articles = hp.order(body_polarity_sentiment: :desc)
+      @happy_things = []
+      @happy_articles.each do |happy|
+        carousel_happy = {
+                        id: happy.id,
+                        title: happy.title,
+                        image_url: happy.img_url,
+                        category: iab[0].aylien_category.category,
+                        title_sentiment: happy.title_polarity_sentiment,
+                        body_sentiment: happy.title_polarity_sentiment,
+                        day: happy.published_at.day,
+                        month: Date::MONTHNAMES[happy.published_at.month],
+                        year: happy.published_at.year
+                        }
+        @happy_things << carousel_happy
       end
     end
 
