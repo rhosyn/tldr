@@ -24,6 +24,8 @@ class AylienHappy
 
 
       begin
+        result = api_instance.list_stories(opts)
+        result.stories.each do |s|
         ay_article = AylienArticle.new(aylien_article_id: s.id,
                                     title: s.title,
                                     img_url: s.media[0].url,

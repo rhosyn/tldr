@@ -24,9 +24,24 @@ catButton.forEach(function (btn) {
           hide_article.id = a.id;
           hide_article.dataset.sentiment = a.sentiment;
           hide_article.dataset.category = a.category;
+          let date_div = document.createElement("div");
+          date_div.className = 'date';
+          let day_span = document.createElement("span");
+          day_span.className = 'day';
+          day_span.innerHTML = a.day;
+          let month_span = document.createElement("span");
+          month_span.className = 'month';
+          month_span.innerHTML = a.month;
+          let year_span = document.createElement("span");
+          year_span.className = 'year';
+          year_span.innerHTML = a.year;
+          date_div.appendChild(day_span);
+          date_div.appendChild(month_span);
+          date_div.appendChild(year_span);
           let title_p = document.createElement("p");
           title_p.innerHTML = a.title;
           title_p.className = 'headline';
+          hide_article.appendChild(date_div);
           hide_article.appendChild(title_p);
           let card_image = document.createElement("div");
           card_image.className = 'card-image';
@@ -41,9 +56,24 @@ catButton.forEach(function (btn) {
             hide_article.id = a.id;
             hide_article.dataset.sentiment = a.sentiment;
             hide_article.dataset.category = a.category;
+            let date_div = document.createElement("div");
+            date_div.className = 'date';
+            let day_span = document.createElement("span");
+            day_span.className = 'day';
+            day_span.innerHTML = a.day;
+            let month_span = document.createElement("span");
+            month_span.className = 'month';
+            month_span.innerHTML = a.month;
+            let year_span = document.createElement("span");
+            year_span.className = 'year';
+            year_span.innerHTML = a.year;
+            date_div.appendChild(day_span);
+            date_div.appendChild(month_span);
+            date_div.appendChild(year_span);
             let title_p = document.createElement("p");
             title_p.innerHTML = a.title;
             title_p.className = 'headline';
+            hide_article.appendChild(date_div);
             hide_article.appendChild(title_p);
             let card_image = document.createElement("div");
             card_image.className = 'card-image';
@@ -94,6 +124,15 @@ catButton.forEach(function (btn) {
         artic.classList.add("hideRight");
       }
     });
+    // visArticles.forEach(function(v) {
+    //   console.log(v.children[0]);
+    //   // v.children[0].classList.remove();
+    //   // v.children[0].classList.add("date");
+    //   // v.children[1].classList.remove();
+    //   // v.children[1].classList.add("headline");
+    //   // v.children[2].classList.remove();
+    //   // v.children[2].classList.add("card-image");
+    // })
     findClick();
   });
 })
@@ -124,7 +163,7 @@ function moveToSelected(element) {
     document.querySelector(".selected div").classList.remove("selected");
 
     $(nextSecond).removeClass().addClass("nextRightSecond");
-    $(prevSecond).removeClass().addClass("prevLeftSecond");
+    // $(prevSecond).removeClass().addClass("prevLeftSecond");
 
     $(nextSecond).nextAll().removeClass().addClass('hideRight');
     $(prevSecond).prevAll().removeClass().addClass('hideLeft');
@@ -136,17 +175,22 @@ function moveToSelected(element) {
     Array.from(car.children).forEach(function (ch) {
       let btnSelected = document.querySelector(".btn-sm.selected");
       if (ch.dataset.category == btnSelected.dataset.category) {
-        ch.classList.remove("hidden");
+        ch.classList.remove();
         ch.classList.add("visible");
         ch.classList.add("article");
-        ch.children[0].classList.add("headline");
-        ch.children[1].classList.add("card-image");
+        ch.children[0].classList.remove();
+        ch.children[0].classList.add("date");
+        ch.children[1].classList.remove();
+        ch.children[1].classList.add("headline");
+        ch.children[2].classList.remove();
+        ch.children[2].classList.add("card-image");
       } else {
         ch.classList.add("hidden")
         ch.classList.remove("visible");
       }
     });
-
+    let img = document.querySelectorAll(".card-image");
+    img.forEach(function (i) {i.classList.remove("selected")});
 }
 
 

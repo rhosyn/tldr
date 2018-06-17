@@ -2,7 +2,7 @@
   // Base layer - holds layout
   position: relative;
   background-color: #CCCCCC;
-  height: 250px;
+  height: 320px;
   width: 90vw;
   display: flex;
   align-items: center;
@@ -11,7 +11,7 @@
 }
 
 .snippet_content{
-  text-align: center;
+  text-align: left;
   top: 35%;
   width: 70%;
 }
@@ -26,7 +26,7 @@
 .snippet_no {
   position: absolute;
   text-align: center;
-  bottom: 10%;
+  bottom: 3%;
   color: white;
   font-family: Raleway;
   font-size: 10px;
