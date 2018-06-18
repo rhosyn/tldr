@@ -90,7 +90,7 @@ happyButton.addEventListener('click', function () {
     //   // v.children[2].classList.remove();
     //   // v.children[2].classList.add("card-image");
     // })
-    findClick();
+    handleGesture();
 })
 
 catButton.forEach(function (btn) {
@@ -216,10 +216,36 @@ catButton.forEach(function (btn) {
     //   // v.children[2].classList.remove();
     //   // v.children[2].classList.add("card-image");
     // })
-    findClick();
+    handleGesture();
   });
 })
 
+let touchstartX = 0;
+let touchstartY = 0;
+let touchendX = 0;
+let touchendY = 0;
+
+const gestureZone = document.getElementById('gestureZone');
+
+gestureZone.addEventListener('touchstart', function(event) {
+    touchstartX = event.changedTouches[0].screenX;
+    touchstartY = event.changedTouches[0].screenY;
+}, false);
+
+gestureZone.addEventListener('touchend', function(event) {
+    touchendX = event.changedTouches[0].screenX;
+    touchendY = event.changedTouches[0].screenY;
+    handleGesture();
+}, false);
+
+function handleGesture() {
+    if (touchendX < touchstartX) {
+        moveToSelected('next');
+    }
+    if (touchendX > touchstartX) {
+        moveToSelected('prev');
+    }
+}
 
 
 function moveToSelected(element) {
@@ -243,7 +269,7 @@ function moveToSelected(element) {
     $(prev).removeClass().addClass("prev");
     $(next).removeClass().addClass("next");
     document.querySelector(".selected p").classList.remove("prev");
-    document.querySelector(".selected div").classList.remove("selected");
+    // document.querySelector(".selected div").classList.remove("selected");
 
     $(nextSecond).removeClass().addClass("nextRightSecond");
     // $(prevSecond).removeClass().addClass("prevLeftSecond");
@@ -287,21 +313,6 @@ function moveToSelected(element) {
     img.forEach(function (i) {i.classList.remove("selected")});
 }
 
-
-function findClick() {
-  $('#carousel div').click(function() {
-    console.log(this);
-    moveToSelected($(this));
-  });
-
-  $('#prev').click(function() {
-    moveToSelected('prev');
-  });
-
-  $('#next').click(function() {
-    moveToSelected('next');
-  });
-}
 
 
 export { moveToSelected };
