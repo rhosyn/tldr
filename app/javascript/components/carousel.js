@@ -1,6 +1,17 @@
 const catButton = document.querySelectorAll(".btn-sm");
 const happyButton = document.getElementById("happy-button");
 const carousel = document.getElementById("carousel");
+const law = document.querySelector(".law");
+const business = document.querySelector(".business");
+const science = document.querySelector(".science");
+const technology = document.querySelector(".technology");
+const entertainment = document.querySelector(".entertainment");
+const health = document.querySelector(".health");
+const sport = document.querySelector(".sport");
+
+$('.law').click(function(){
+    catButton[0].click();
+})
 
 happyButton.addEventListener('click', function () {
   happyButton.classList.toggle("happy");

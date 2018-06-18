@@ -172,6 +172,12 @@ html, body, main {
   z-index: -1;
 }
 
+#happy-button{
+  margin-right: calc(48vw - 70px);
+  margin-top: 2vh;
+  margin-left: 2vh;
+}
+
 #happy-button.happy {
   background-color:yellow;
 }
