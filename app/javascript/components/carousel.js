@@ -240,6 +240,7 @@ gestureZone.addEventListener('touchend', function(event) {
 
 function handleGesture() {
     if (touchendX < touchstartX) {
+      console.log('swipe left');
         moveToSelected('next');
     }
     if (touchendX > touchstartX) {

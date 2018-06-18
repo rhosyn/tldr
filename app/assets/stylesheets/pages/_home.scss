@@ -212,5 +212,37 @@ html, body, main {
   height: 412px;
 }
 
+@media(min-width: 600px) {
+  .navbar-wagon {
+    display: none;
+  }
+  .overlay {
+    display: none;
+  }
+  #gestureZone {
+    display: none;
+  }
+  .desktop-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    color: white;
+    flex-direction: column;
+    h3 {
+      margin-top: none !important;
+    }
+  }
+}
+
+@media(max-width: 600px) {
+  .desktop-banner {
+    display: none;
+  }
+}
+
 
 
