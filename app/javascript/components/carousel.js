@@ -239,10 +239,10 @@ gestureZone.addEventListener('touchend', function(event) {
 }, false);
 
 function handleGesture() {
-    if (touchendX <= touchstartX) {
+    if (touchendX < touchstartX) {
         moveToSelected('next');
     }
-    if (touchendX >= touchstartX) {
+    if (touchendX > touchstartX) {
         moveToSelected('prev');
     }
 }
@@ -269,7 +269,7 @@ function moveToSelected(element) {
     $(prev).removeClass().addClass("prev");
     $(next).removeClass().addClass("next");
     document.querySelector(".selected p").classList.remove("prev");
-    document.querySelector(".selected div").classList.remove("selected");
+    // document.querySelector(".selected div").classList.remove("selected");
 
     $(nextSecond).removeClass().addClass("nextRightSecond");
     // $(prevSecond).removeClass().addClass("prevLeftSecond");
@@ -313,21 +313,6 @@ function moveToSelected(element) {
     img.forEach(function (i) {i.classList.remove("selected")});
 }
 
-
-// function findClick() {
-//   $('#carousel div').click(function() {
-//     console.log(this);
-//     moveToSelected($(this));
-//   });
-
-//   $('#prev').click(function() {
-//     moveToSelected('prev');
-//   });
-
-//   $('#next').click(function() {
-//     moveToSelected('next');
-//   });
-// }
 
 
 export { moveToSelected };
