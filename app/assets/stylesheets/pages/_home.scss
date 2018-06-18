@@ -3,7 +3,14 @@ html, body, main {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: black;
+  background: rgba(56,45,67,1);
+  background: -moz-linear-gradient(top, rgba(56,45,67,1) 0%, rgba(140,138,168,1) 48%, rgba(56,45,67,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(56,45,67,1)), color-stop(48%, rgba(140,138,168,1)), color-stop(100%, rgba(56,45,67,1)));
+  background: -webkit-linear-gradient(top, rgba(56,45,67,1) 0%, rgba(140,138,168,1) 48%, rgba(56,45,67,1) 100%);
+  background: -o-linear-gradient(top, rgba(56,45,67,1) 0%, rgba(140,138,168,1) 48%, rgba(56,45,67,1) 100%);
+  background: -ms-linear-gradient(top, rgba(56,45,67,1) 0%, rgba(140,138,168,1) 48%, rgba(56,45,67,1) 100%);
+  background: linear-gradient(to bottom, rgba(56,45,67,1) 0%, rgba(140,138,168,1) 48%, rgba(56,45,67,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#382d43', endColorstr='#382d43', GradientType=0 );
 }
 
 .headline {
@@ -19,7 +26,7 @@ html, body, main {
 #carousel {
   position: relative;
   height: 400px;
-  top: 45%;
+  top: 20vh;
   transform: translateY(-45%);
   overflow: hidden;
   z-index: 1 !important;
@@ -158,7 +165,7 @@ html, body, main {
 
 .click_me_container {
   position: relative;
-  top: 45%;
+  top: 33%;
 }
 
 .click-me.active {
@@ -212,6 +219,9 @@ html, body, main {
   height: 412px;
 }
 
+#gestureZone {
+}
+
 @media(min-width: 600px) {
   .navbar-wagon {
     display: none;
@@ -243,6 +253,7 @@ html, body, main {
     display: none;
   }
 }
+
 
 
 

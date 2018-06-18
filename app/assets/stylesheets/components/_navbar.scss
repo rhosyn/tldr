@@ -1,7 +1,6 @@
 /* Main navbar */
 .navbar-wagon {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: white;
   transition: all 0.3s ease;
   height: 50px;
   display: flex;
@@ -58,7 +57,7 @@
   position: absolute;
   right: 10px;
   top: -6px;
-  background-color: white;
+  // background-color: white;
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
@@ -109,3 +108,18 @@
   transition: 0.55s 0.5s;
   width: 40%;
 }
+
+.fixed-top {
+    width: 100vw;
+    text-align: center;
+    position: absolute;
+        top: 2vh;
+  h1 {
+    font-family: $headers-font;
+    border-bottom: 1px solid #6b5575;
+    color: #FFFFFF;
+    opacity: 0.5;
+    padding: 5px;
+  }
+}
+
