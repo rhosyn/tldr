@@ -1,5 +1,4 @@
 require 'aylien_news_api'
-require 'pry-byebug'
 
 class Aylien
   def retrieve

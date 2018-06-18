@@ -1,5 +1,4 @@
 require 'aylien_news_api'
-require 'pry-byebug'
 
 class AylienApiJob < ApplicationJob
   queue_as :aylien_api

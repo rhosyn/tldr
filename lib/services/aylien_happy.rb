@@ -33,9 +33,22 @@ class AylienHappy
           :per_page => 20
         }
 
-        begin
-          result = api_instance.list_stories(opts)
-          result.stories.each do |s|
+      begin
+        result = api_instance.list_stories(opts)
+        result.stories.each do |s|
+        keyword_array = []
+          s.keywords.each do |keyword|
+            keyword_array << keyword.downcase
+          end
+          joint_array = []
+          AylienArticle.all.each do |a|
+            check_array = a.aylien_keywords.first(5).map {|k| k.keyword.downcase}
+            intersection = check_array & keyword_array
+            if intersection.length > 2
+              joint_array << a
+            end
+          end
+          if joint_array == []
             if AylienArticle.where(title: s.title).empty?
               ay_article = AylienArticle.new(aylien_article_id: s.id,
                                         title: s.title,
@@ -105,16 +118,17 @@ class AylienHappy
                 article_category.aylien_category = c
                 article_category.save!
               end
-              ay_article.save!
+            ay_article.save!
             end
           end
-
-        rescue AylienNewsApi::ApiError => e
-          puts "Exception when calling DefaultApi->list_stories: #{e}"
-          puts e.response_body
-        rescue ActiveRecord::RecordInvalid
-          puts "Element already exists"
         end
+
+      rescue AylienNewsApi::ApiError => e
+        puts "Exception when calling DefaultApi->list_stories: #{e}"
+        puts e.response_body
+      rescue ActiveRecord::RecordInvalid
+        puts "Element already exists"
+      end
     end
 
   end
