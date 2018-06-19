@@ -233,13 +233,17 @@ function handleGesture() {
     if (touchendX < touchstartX) {
       console.log('swipe left');
       document.querySelector(".selected").children[0].style.display = 'none';
+      document.querySelector(".selected").children[1].style.display = 'none';
       moveToSelected('next');
       document.querySelector(".selected").children[0].style.display = 'block';
+      document.querySelector(".selected").children[1].style.display = 'block';
     }
     if (touchendX > touchstartX) {
       document.querySelector(".selected").children[0].style.display = 'none';
+      document.querySelector(".selected").children[1].style.display = 'none';
       moveToSelected('prev');
       document.querySelector(".selected").children[0].style.display = 'block';
+      document.querySelector(".selected").children[1].style.display = 'block';
     }
 }
 
