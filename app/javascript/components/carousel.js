@@ -1,17 +1,7 @@
 const catButton = document.querySelectorAll(".btn-sm");
 const happyButton = document.getElementById("happy-button");
 const carousel = document.getElementById("carousel");
-const law = document.querySelector(".law");
-const business = document.querySelector(".business");
-const science = document.querySelector(".science");
-const technology = document.querySelector(".technology");
-const entertainment = document.querySelector(".entertainment");
-const health = document.querySelector(".health");
-const sport = document.querySelector(".sport");
-
-$('.law').click(function(){
-    catButton[0].click();
-})
+const landingMenu = document.getElementById("menu");
 
 happyButton.addEventListener('click', function () {
   happyButton.classList.toggle("happy");
@@ -50,21 +40,6 @@ happyButton.addEventListener('click', function () {
       card_image.style.backgroundImage = "url(" + happy.image_url + ")";
       hide_article.appendChild(card_image);
       carousel.appendChild(hide_article);
-
-      // let hide_article = document.createElement("div");
-      // hide_article.className = 'hideRight article';
-      // hide_article.id = happy.id;
-      // hide_article.dataset.title_sentiment = happy.title_polarity_sentiment;
-      // hide_article.dataset.body_sentiment = happy.body_polarity_sentiment;
-      // let title_p = document.createElement("p");
-      // title_p.innerHTML = happy.title;
-      // title_p.className = 'headline';
-      // hide_article.appendChild(title_p);
-      // let card_image = document.createElement("div");
-      // card_image.className = 'card-image';
-      // card_image.style.backgroundImage = "url(" + happy.img_url + ")";
-      // hide_article.appendChild(card_image);
-      // carousel.appendChild(hide_article);
     })
   }
   let articles = document.querySelectorAll(".article");
@@ -106,6 +81,7 @@ happyButton.addEventListener('click', function () {
 
 catButton.forEach(function (btn) {
   btn.addEventListener('click', function() {
+    landingMenu.innerHTML = "";
     carousel.innerHTML = "";
     article_array.forEach(function (a) {
       if (happyButton.classList.contains("happy")) {
