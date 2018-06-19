@@ -31,14 +31,19 @@ function generate_history_expanded (element) {
   let container = document.createElement("div");
   container.className = "history_expanded_container";
 
+  let imgHolder = document.createElement("div");
+  imgHolder.className = "history_expanded_img_div";
+
   let img = document.createElement("div");
   img.className = "history_expanded_img";
   img.setAttribute("style", `background-image: url(${element.dataset.img_url});`)
   let title = document.createElement("p");
+  title.className = "history-popup-header";
   title.innerHTML = element.dataset.title;
 
+  imgHolder.appendChild(img);
   img.appendChild(title);
-  container.appendChild(img);
+  container.appendChild(imgHolder);
 
   let snippet_container = document.createElement("div");
   snippet_container.classList = "history_expanded_snippet_container";

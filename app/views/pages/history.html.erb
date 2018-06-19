@@ -19,7 +19,9 @@
       <% article_array.each do  |a| %>
       <div class="history_article" id = "hist-<%= a.id %>"data-id="<%= a.id %>" data-img_url="<%= a.img_url %>" data-sentences= "<%= a.summary_sentences %>" data-title= "<%= a.title %>">
         <!-- TODO: Add in links back to cards -->
-        <div class="history_article_img" style="background-image: url( <%= a.img_url %> );">
+        <div class="history-image-div">
+          <div class="history_article_img" style="background-image: url( <%= a.img_url %> );">
+          </div>
         </div>
         <p><%= a.title %></p>
       </div>

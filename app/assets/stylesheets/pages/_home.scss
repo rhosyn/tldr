@@ -96,6 +96,9 @@ html, body, main {
   transition: all ease 0.5s;
 }
 #carousel div.selected {
+  background-image: image-url("tldr-placeholder.png");
+  background-size: cover;
+  background-position: 0 -10px;
   z-index: 100 !important;
   left: 50%;
   height: 290px;
@@ -186,19 +189,6 @@ html, body, main {
   z-index: -1;
 }
 
-#happy-button:focus { outline: none; }
-
-#happy-button{
-  margin-right: calc(43vw - 70px);
-  margin-top: -1vh;
-  margin-left: 2vh;
-  font-size: 25px;
-}
-
-#happy-button.happy {
-  background-color: #ffffff47;
-    color: white;
-}
 
 .happy-heading {
   color: white;
