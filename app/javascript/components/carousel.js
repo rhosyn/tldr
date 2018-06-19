@@ -1,10 +1,14 @@
 const catButton = document.querySelectorAll(".btn-sm");
 const happyButton = document.getElementById("happy-button");
 const carousel = document.getElementById("carousel");
+const landingMenu = document.getElementById("menu");
+const footerLinks = document.querySelector(".footer-links");
 
 happyButton.addEventListener('click', function () {
   happyButton.classList.toggle("happy");
   happyButton.classList.add("i-am-selected");
+  landingMenu.style.display = 'none';
+  footerLinks.style.display = 'flex';
   carousel.innerHTML = "";
   if (happyButton.classList.contains("happy")) {
     happy_array.forEach(function (happy) {
@@ -39,21 +43,6 @@ happyButton.addEventListener('click', function () {
       card_image.style.backgroundImage = "url(" + happy.image_url + ")";
       hide_article.appendChild(card_image);
       carousel.appendChild(hide_article);
-
-      // let hide_article = document.createElement("div");
-      // hide_article.className = 'hideRight article';
-      // hide_article.id = happy.id;
-      // hide_article.dataset.title_sentiment = happy.title_polarity_sentiment;
-      // hide_article.dataset.body_sentiment = happy.body_polarity_sentiment;
-      // let title_p = document.createElement("p");
-      // title_p.innerHTML = happy.title;
-      // title_p.className = 'headline';
-      // hide_article.appendChild(title_p);
-      // let card_image = document.createElement("div");
-      // card_image.className = 'card-image';
-      // card_image.style.backgroundImage = "url(" + happy.img_url + ")";
-      // hide_article.appendChild(card_image);
-      // carousel.appendChild(hide_article);
     })
   }
   let articles = document.querySelectorAll(".article");
@@ -81,20 +70,13 @@ happyButton.addEventListener('click', function () {
         artic.classList.add("hideRight");
       }
     });
-    // visArticles.forEach(function(v) {
-    //   console.log(v.children[0]);
-    //   // v.children[0].classList.remove();
-    //   // v.children[0].classList.add("date");
-    //   // v.children[1].classList.remove();
-    //   // v.children[1].classList.add("headline");
-    //   // v.children[2].classList.remove();
-    //   // v.children[2].classList.add("card-image");
-    // })
     handleGesture();
 })
 
 catButton.forEach(function (btn) {
   btn.addEventListener('click', function() {
+    landingMenu.style.display = 'none';
+    footerLinks.style.display = 'flex';
     carousel.innerHTML = "";
     article_array.forEach(function (a) {
       if (happyButton.classList.contains("happy")) {
@@ -207,15 +189,6 @@ catButton.forEach(function (btn) {
         artic.classList.add("hideRight");
       }
     });
-    // visArticles.forEach(function(v) {
-    //   console.log(v.children[0]);
-    //   // v.children[0].classList.remove();
-    //   // v.children[0].classList.add("date");
-    //   // v.children[1].classList.remove();
-    //   // v.children[1].classList.add("headline");
-    //   // v.children[2].classList.remove();
-    //   // v.children[2].classList.add("card-image");
-    // })
     handleGesture();
   });
 })
@@ -241,12 +214,22 @@ gestureZone.addEventListener('touchend', function(event) {
 function handleGesture() {
     if (touchendX < touchstartX) {
       console.log('swipe left');
-        moveToSelected('next');
+      document.querySelector(".selected").children[0].style.display = 'none';
+      document.querySelector(".selected").children[1].style.display = 'none';
+      moveToSelected('next');
+      document.querySelector(".selected").children[0].style.display = 'block';
+      document.querySelector(".selected").children[1].style.display = 'block';
     }
     if (touchendX > touchstartX) {
-        moveToSelected('prev');
+      document.querySelector(".selected").children[0].style.display = 'none';
+      document.querySelector(".selected").children[1].style.display = 'none';
+      moveToSelected('prev');
+      document.querySelector(".selected").children[0].style.display = 'block';
+      document.querySelector(".selected").children[1].style.display = 'block';
     }
 }
+
+handleGesture();
 
 
 function moveToSelected(element) {
@@ -282,8 +265,8 @@ function moveToSelected(element) {
     $(prevSecond).prevAll().removeClass().addClass('hideLeft');
 
     let car = document.getElementById("carousel");
-    let btnSelected = document.querySelector(".btn.i-am-selected");
-    let catBtn = document.querySelector(".btn.btn-sm.i-am-selected");
+    let btnSelected = document.querySelector(".btn-sm.i-am-selected");
+    let catBtn = document.querySelector(".btn-sm.i-am-selected");
     Array.from(car.children).forEach(function (ch) {
       if (btnSelected.classList.contains("happy")) {
         ch.classList.remove();
