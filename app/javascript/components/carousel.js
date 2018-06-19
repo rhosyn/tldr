@@ -3,6 +3,10 @@ const happyButton = document.getElementById("happy-button");
 const carousel = document.getElementById("carousel");
 const landingMenu = document.getElementById("menu");
 
+
+
+
+
 happyButton.addEventListener('click', function () {
   happyButton.classList.toggle("happy");
   happyButton.classList.add("i-am-selected");
@@ -81,7 +85,7 @@ happyButton.addEventListener('click', function () {
 
 catButton.forEach(function (btn) {
   btn.addEventListener('click', function() {
-    landingMenu.innerHTML = "";
+    landingMenu.style.display = 'none';
     carousel.innerHTML = "";
     article_array.forEach(function (a) {
       if (happyButton.classList.contains("happy")) {
@@ -228,12 +232,16 @@ gestureZone.addEventListener('touchend', function(event) {
 function handleGesture() {
     if (touchendX < touchstartX) {
       console.log('swipe left');
-        moveToSelected('next');
+      document.querySelector(".selected").children[0].style.display = 'none';
+      moveToSelected('next');
     }
     if (touchendX > touchstartX) {
-        moveToSelected('prev');
+      document.querySelector(".selected").children[0].style.display = 'none';
+      moveToSelected('prev');
     }
 }
+
+handleGesture();
 
 
 function moveToSelected(element) {
@@ -270,7 +278,7 @@ function moveToSelected(element) {
 
     let car = document.getElementById("carousel");
     let btnSelected = document.querySelector(".btn.i-am-selected");
-    let catBtn = document.querySelector(".btn.btn-sm.i-am-selected");
+    let catBtn = document.querySelector(".btn-sm.i-am-selected");
     Array.from(car.children).forEach(function (ch) {
       if (btnSelected.classList.contains("happy")) {
         ch.classList.remove();
