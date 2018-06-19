@@ -10,9 +10,9 @@ function attach_target_listeners() {
 function generate_snippets() {
   const active_card_id = parseInt(document.querySelector('.selected').id, 10);
   ahoy.track('article_click', {article_id: active_card_id});
-  const article_snippets = snippet_array[active_card_id];
-  console.log(article_snippets)
-  const size = article_snippets.length;
+  const article_snippets = snippet_array[active_card_id][0];
+  // console.log(article_snippets);
+  const size = article_snippets.length + 1;
   let count = 0;
   article_snippets.forEach((snippet) => {
     count += 1;
@@ -66,6 +66,41 @@ function generate_snippets() {
     $( ".overlaycontainer" ).append(snippet_container);
 
 });
+  const article_url = snippet_array[active_card_id][1];
+  let snippet_container = document.createElement("div");
+  snippet_container.className = 'snippet_container snippet_hidden';
+  snippet_container.id = `snippet-${size}`;
+
+  let snippet_content = document.createElement("div");
+  snippet_content.className = 'snippet_content';
+
+  let content_p = document.createElement("p");
+  content_p.innerHTML = "View the original article ";
+  let article_link = document.createElement("a");
+  article_link.setAttribute('href', article_url);
+  article_link.setAttribute('target', '_blank');
+  article_link.innerHTML = "here";
+  content_p.appendChild(article_link);
+
+  snippet_content.appendChild(content_p);
+  snippet_container.appendChild(snippet_content);
+
+  let snippet_no = document.createElement("div");
+  snippet_no.className = 'snippet_no';
+  snippet_no.innerHTML = `${size} / ${size}`;
+  snippet_container.appendChild(snippet_no);
+
+  let arrow_left = document.createElement("i");
+  arrow_left.className = 'fas fa-arrow-circle-left snippet-left-arrow';
+
+  let target_left = document.createElement("div");
+  target_left.className = 'next_target target_left';
+  if (count != 1) {
+    snippet_container.appendChild(target_left)
+    snippet_container.appendChild(arrow_left)
+  }
+
+  $( ".overlaycontainer" ).append(snippet_container);
 }
 
 function activate_snippet(snippet){

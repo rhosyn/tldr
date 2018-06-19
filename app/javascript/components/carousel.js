@@ -3,9 +3,11 @@ const happyButton = document.getElementById("happy-button");
 const carousel = document.getElementById("carousel");
 const landingMenu = document.getElementById("menu");
 const footerLinks = document.querySelector(".footer-links");
+const overlay = document.querySelector(".overlay");
 
 happyButton.addEventListener('click', function () {
   happyButton.classList.toggle("happy");
+  overlay.classList.remove("hidden");
   happyButton.classList.add("i-am-selected");
   landingMenu.style.display = 'none';
   footerLinks.style.display = 'flex';
@@ -78,6 +80,7 @@ catButton.forEach(function (btn) {
     landingMenu.style.display = 'none';
     footerLinks.style.display = 'flex';
     carousel.innerHTML = "";
+    overlay.classList.remove("hidden");
     article_array.forEach(function (a) {
       if (happyButton.classList.contains("happy")) {
         if ((a.category == btn.dataset.category) && (a.title_sentiment == "positive" ) && (a.body_sentiment == "positive" )) {
