@@ -234,10 +234,12 @@ function handleGesture() {
       console.log('swipe left');
       document.querySelector(".selected").children[0].style.display = 'none';
       moveToSelected('next');
+      document.querySelector(".selected").children[0].style.display = 'block';
     }
     if (touchendX > touchstartX) {
       document.querySelector(".selected").children[0].style.display = 'none';
       moveToSelected('prev');
+      document.querySelector(".selected").children[0].style.display = 'block';
     }
 }
 
@@ -277,7 +279,7 @@ function moveToSelected(element) {
     $(prevSecond).prevAll().removeClass().addClass('hideLeft');
 
     let car = document.getElementById("carousel");
-    let btnSelected = document.querySelector(".btn.i-am-selected");
+    let btnSelected = document.querySelector(".btn-sm.i-am-selected");
     let catBtn = document.querySelector(".btn-sm.i-am-selected");
     Array.from(car.children).forEach(function (ch) {
       if (btnSelected.classList.contains("happy")) {

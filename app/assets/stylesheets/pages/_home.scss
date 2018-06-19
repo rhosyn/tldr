@@ -64,9 +64,11 @@ html, body, main {
   width: 230px;
   transform: translateY(50px) translateX(-50%);
   background-color: white;
-  transition: all ease 1s;
+  transition: all ease 0.5s;
+  opacity: 0.5;
   .headline {
     opacity: 0;
+    transition: all ease 0.1s;
   }
 }
 #carousel div.prev img {
@@ -82,6 +84,7 @@ html, body, main {
   background-color: white;
   .headline {
     opacity: 0;
+    transition: all ease 0.1s;
   }
 }
 #carousel div.prevLeftSecond img {
@@ -97,7 +100,7 @@ html, body, main {
   transition: all ease 1s;
   .headline {
     opacity: 1;
-    transition: all ease 1s;
+    transition: all ease 0.5s;
   }
 }
 #carousel div.next {
@@ -107,13 +110,16 @@ html, body, main {
   width: 230px;
   transform: translateY(50px) translateX(-50%);
   background-color: white;
-  transition: all ease 1s;
+  transition: all ease 0.5s;
+  opacity: 0.5;
   .headline {
     opacity: 0;
+    transition: all ease 0.1s;
   }
 }
 #carousel div.next img {
   width: 250px;
+  transition: all ease 0.5s;
 }
 #carousel div.nextRightSecond {
   z-index: 4;
@@ -137,6 +143,7 @@ html, body, main {
   background-size:cover;
   clip-path: ellipse(77% 50% at 62% 25%);
   border-radius: 2px;
+
 }
 
 .visible {
