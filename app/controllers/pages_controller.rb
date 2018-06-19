@@ -63,6 +63,16 @@ class PagesController < ApplicationController
     end
   end
 
-
+  def history
+    clicks = Ahoy::Event.where(name: 'article_click').order(time: :desc)
+    @history = {}
+    # raise
+    clicks.each do |click|
+      date = "#{click.time.year}-#{click.time.month}-#{click.time.day}"
+      @history[date] = [] if !@history.keys.include?(date)
+      article = AylienArticle.find(click.properties['article_id'])
+      @history[date] << article if article
+    end
+  end
 end
 
