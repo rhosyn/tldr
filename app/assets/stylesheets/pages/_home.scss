@@ -154,6 +154,7 @@ html, body, main {
 
 .visible {
   display: block;
+  opacity: 1;
   .p {
     display: block;
   }
@@ -185,14 +186,18 @@ html, body, main {
   z-index: -1;
 }
 
+#happy-button:focus { outline: none; }
+
 #happy-button{
-  margin-right: calc(48vw - 70px);
+  margin-right: calc(43vw - 70px);
   margin-top: -1vh;
   margin-left: 2vh;
+  font-size: 25px;
 }
 
 #happy-button.happy {
-  background-color:yellow;
+  background-color: #ffffff47;
+    color: white;
 }
 
 .happy-heading {
@@ -202,6 +207,7 @@ html, body, main {
 .article {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
   border-radius: 2px;
+  opacity: 0;
 }
 
 .date {
