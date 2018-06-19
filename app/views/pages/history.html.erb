@@ -2,14 +2,22 @@
   var snippet_array = <%= raw @history_snippets.to_json %>;
 </script> -->
 
-<div class="history_container active">
+<div class="history_overlay">
+  <div class="history_overlaycontainer">
+    <div class="history_overlaybox">
+    </div>
+
+  </div>
+</div>
+
+<div class="history_container">
   <% @history.each do |date,article_array| %>
   <div class="history_card">
     <div class="history_header"><p><%= date %></p>
     </div>
     <div class="history_elements">
       <% article_array.each do  |a| %>
-      <div class="history_article" id = "hist-<%= a.id %>"data-id="<%= a.id %>" data-img_url="<%= a.img_url %>" data-sentences= "<%= a.summary_sentences %>" data-title="a.title">
+      <div class="history_article" id = "hist-<%= a.id %>"data-id="<%= a.id %>" data-img_url="<%= a.img_url %>" data-sentences= "<%= a.summary_sentences %>" data-title= "<%= a.title %>">
         <!-- TODO: Add in links back to cards -->
         <div class="history_article_img" style="background-image: url( <%= a.img_url %> );">
         </div>
@@ -20,6 +28,7 @@
   </div>
   <% end %>
 </div>
+
 
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
