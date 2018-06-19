@@ -42,8 +42,25 @@
 
 .btn:active {
   color: white;
+  opacity: 1;
+}
+
+.btn:focus {
+  color: white;
+  opacity: 1;
+  font-size: 27px;
 }
 
 .btn:hover {
   color: #FFFFFF;
 }
+
+.btn:active:focus { outline: none; }
+.btn-sm:active:focus { outline: none; }
+.btn-secondary:active:focus { outline: none; }
+.btn:focus { outline: none; }
+.btn-sm:focus { outline: none; }
+.btn-secondary:focus { outline: none; }
+.btn:visited { outline: none; }
+.btn-sm:visited { outline: none; }
+.btn-secondary:visited { outline: none; }
