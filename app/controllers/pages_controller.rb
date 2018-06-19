@@ -46,7 +46,7 @@ class PagesController < ApplicationController
     @aylien_articles.each do |aylien|
       ay_snippets = aylien.summary_sentences.gsub!("[","").gsub!("]","").split("\",").to_a
       ay_snippets.select{ |s| s.strip[0] == "\""}.map!{|snippet| snippet.strip.gsub!("\"","").strip}
-      @aylien_snippets[aylien.id] = ay_snippets
+      @aylien_snippets[aylien.id] = [ay_snippets, aylien.article_url]
     end
   end
 
