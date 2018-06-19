@@ -14,8 +14,8 @@ function history_listeners() {
 }
 
 function history_overlay_listeners() {
-  console.log("hi");
-  document.querySelector('.overlaybox').addEventListener("click", (event) => {
+  document.querySelector('.history_overlaybox').addEventListener("click", (event) => {
+    console.log('hi');
     document.querySelector('.history_overlay').classList.toggle('active');
     document.querySelector('.history_container').classList.toggle('smaller');
     document.querySelector('.history_expanded_container').remove();
@@ -44,9 +44,12 @@ function generate_history_expanded (element) {
   snippet_container.classList = "history_expanded_snippet_container";
   const snippets = element.dataset.sentences.split('", "');
   snippets.forEach((s) => {
-    let snippet = document.createElement("div");
+  let snippet = document.createElement("div");
     snippet.classList = "history_expanded_snippet";
-    snippet.innerHTML = s.replace('["','').replace(']"','');
+    let s_text = document.createElement("p");
+    s_text.innerHTML = s.replace('["','').replace('"]','');
+
+    snippet.appendChild(s_text);
     snippet_container.appendChild(snippet);
   })
 
