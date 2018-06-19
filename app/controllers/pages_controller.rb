@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :index]
 
   def home
-    @aylien_articles = AylienArticle.all.reject {|a| a.summary_sentences.nil? }
+    @aylien_articles = AylienArticle.all.order(published_at: :desc).reject {|a| a.summary_sentences.nil? }
     @frontend_articles = []
     @aylien_articles.each do |article|
       cats = ArticleCategory.where(aylien_article: article)
