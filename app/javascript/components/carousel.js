@@ -2,10 +2,7 @@ const catButton = document.querySelectorAll(".btn-sm");
 const happyButton = document.getElementById("happy-button");
 const carousel = document.getElementById("carousel");
 const landingMenu = document.getElementById("menu");
-
-
-
-
+const footerLinks = document.querySelector(".footer-links");
 
 happyButton.addEventListener('click', function () {
   happyButton.classList.toggle("happy");
@@ -71,21 +68,13 @@ happyButton.addEventListener('click', function () {
         artic.classList.add("hideRight");
       }
     });
-    // visArticles.forEach(function(v) {
-    //   console.log(v.children[0]);
-    //   // v.children[0].classList.remove();
-    //   // v.children[0].classList.add("date");
-    //   // v.children[1].classList.remove();
-    //   // v.children[1].classList.add("headline");
-    //   // v.children[2].classList.remove();
-    //   // v.children[2].classList.add("card-image");
-    // })
     handleGesture();
 })
 
 catButton.forEach(function (btn) {
   btn.addEventListener('click', function() {
     landingMenu.style.display = 'none';
+    footerLinks.style.display = 'flex';
     carousel.innerHTML = "";
     article_array.forEach(function (a) {
       if (happyButton.classList.contains("happy")) {
@@ -198,15 +187,6 @@ catButton.forEach(function (btn) {
         artic.classList.add("hideRight");
       }
     });
-    // visArticles.forEach(function(v) {
-    //   console.log(v.children[0]);
-    //   // v.children[0].classList.remove();
-    //   // v.children[0].classList.add("date");
-    //   // v.children[1].classList.remove();
-    //   // v.children[1].classList.add("headline");
-    //   // v.children[2].classList.remove();
-    //   // v.children[2].classList.add("card-image");
-    // })
     handleGesture();
   });
 })
