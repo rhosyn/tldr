@@ -43,13 +43,25 @@ function generate_snippets() {
     snippet_no.innerHTML = `${count} / ${size}`;
     snippet_container.appendChild(snippet_no);
 
+    let arrow_right = document.createElement("i");
+    arrow_right.className = 'fas fa-arrow-circle-right snippet-right-arrow';
+
+    let arrow_left = document.createElement("i");
+    arrow_left.className = 'fas fa-arrow-circle-left snippet-left-arrow';
+
     let target_right = document.createElement("div");
     target_right.className = 'next_target target_right';
-    if (count != size) { snippet_container.appendChild(target_right)}
+    if (count != size) {
+      snippet_container.appendChild(target_right)
+      snippet_container.appendChild(arrow_right)
+    }
 
     let target_left = document.createElement("div");
     target_left.className = 'next_target target_left';
-    if (count != 1) {snippet_container.appendChild(target_left)}
+    if (count != 1) {
+      snippet_container.appendChild(target_left)
+      snippet_container.appendChild(arrow_left)
+    }
 
     $( ".overlaycontainer" ).append(snippet_container);
 

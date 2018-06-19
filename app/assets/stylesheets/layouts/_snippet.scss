@@ -1,7 +1,7 @@
 .snippet_container {
   // Base layer - holds layout
   position: relative;
-  background-color: #CCCCCC;
+  background-color: #696a8c;
   height: 320px;
   width: 90vw;
   display: flex;
@@ -17,10 +17,9 @@
 }
 
 .snippet_content p {
-  color: white;
-  font-family: Raleway;
-  font-weight: bold;
-  font-size: 16px;
+    color: #ffffffc4;
+    font-family: Raleway;
+    font-size: 16px;
 }
 
 .snippet_no {
@@ -51,4 +50,20 @@
 
 .snippet_hidden {
   display: none;
+}
+
+.snippet-right-arrow {
+  position: absolute;
+  right: 2%;
+  color: #260d3c;
+  font-size: 19px;
+  z-index: -1;
+}
+
+.snippet-left-arrow {
+  position: absolute;
+  left: 2%;
+  color: #260d3c;
+  font-size: 19px;
+  z-index: -1;
 }
