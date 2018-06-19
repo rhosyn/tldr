@@ -1,0 +1,18 @@
+<div class="history_container">
+  <% @history.each do |date,article_array| %>
+  <div class="history_card">
+    <div class="history_header"><p><%= date %></p>
+    </div>
+    <div class="history_elements">
+      <% article_array.each do  |a| %>
+      <div class="history_article">
+        <!-- TODO: Add in links back to cards -->
+        <div class="history_article_img" style="background-image: url( <%= a.img_url %> );">
+        </div>
+        <p><%= a.title %></p>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>
