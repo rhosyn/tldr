@@ -187,7 +187,7 @@ html, body, main {
 
 #happy-button{
   margin-right: calc(48vw - 70px);
-  margin-top: 2vh;
+  margin-top: -1vh;
   margin-left: 2vh;
 }
 
@@ -239,8 +239,19 @@ html, body, main {
   height: 412px;
 }
 
-#gestureZone {
+.go-button {
+  z-index: 1;
+  position: absolute;
+  color: #6a4f8ccc;
+  top: 38%;
+  left: 41%;
+  pointer-events: none;
+  h1 {
+    font-family: Merienda;
+  }
 }
+
+
 
 @media(min-width: 600px) {
   .navbar-wagon {

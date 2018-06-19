@@ -113,7 +113,7 @@
     width: 100vw;
     text-align: center;
     position: absolute;
-    top: -2vh;
+    top: 1vh;
     justify-content: flex-start;
     display: flex;
     align-items: center;
@@ -124,6 +124,13 @@
     color: #FFFFFF;
     opacity: 0.5;
     padding: 5px;
+  }
+  a {
+    text-decoration: none;
+  }
+  a:focus {
+    outline: none;
+    color:white;
   }
 }
 

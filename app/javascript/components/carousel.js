@@ -7,6 +7,8 @@ const footerLinks = document.querySelector(".footer-links");
 happyButton.addEventListener('click', function () {
   happyButton.classList.toggle("happy");
   happyButton.classList.add("i-am-selected");
+  landingMenu.style.display = 'none';
+  footerLinks.style.display = 'flex';
   carousel.innerHTML = "";
   if (happyButton.classList.contains("happy")) {
     happy_array.forEach(function (happy) {

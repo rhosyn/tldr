@@ -21,14 +21,14 @@ body{
 }
 
 .menu-button {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     position: absolute;
     left: 50%;
     top: 50%;
-    margin: -75px 0 0 -75px;
+    margin: -50px 0 0 -50px;
     border-radius: 50%;
-    background: #424242;
+    background: #f8f9fb;
     background-size: 100%;
     overflow: hidden;
     text-decoration: none;
@@ -49,8 +49,10 @@ body{
     width: 70px;
     height: 70px;
     position: absolute;
+    // left: 60%;
     left: 55%;
     line-height: 5px;
+    // top: 61%;
     top: 83%;
     margin: -50px 0 0 -50px;
     border-radius: 50%;
