@@ -88,7 +88,7 @@ class PagesController < ApplicationController
 
     # Get popular sub-categories by the articles that have been clicked on
     popular_categories = {}
-    clicke d_articles = []
+    clicked_articles = []
     article_cnt = 0
     article_click_events = Ahoy::Event.where(name: 'article_click')
     article_click_events.each do |e|
@@ -116,12 +116,13 @@ class PagesController < ApplicationController
       iab_array = []
       cat_count += 1
       ar_array = AylienCategory.where(iab: iab).first.aylien_articles.select{|a| seen_articles.index(a).nil? && clicked_articles.index(a).nil? && a.summary_sentences}
+      category_name = AylienCategory.where(iab: iab).first.category
       # puts ar_array.length
       if !ar_array.empty?
         ar_array.each do |a|
           iab_array << a
         end
-        @my_articles[iab] = iab_array
+        @my_articles[category_name] = iab_array
       end
     end
     @my_articles
