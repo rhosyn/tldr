@@ -229,6 +229,7 @@ catButton.forEach(function (btn) {
     let selected = visArticles[0];
     let next = visArticles[1];
     selected.classList.add("selected");
+    ahoy.track('article_view', {article_id: parseInt($(selected).attr('id'),10)});
     next.classList.add("next");
     if (visArticles.length > 2) {
       let nextRightSecond = visArticles[2];
@@ -280,8 +281,6 @@ function handleGesture() {
     }
 }
 
-
-
 function moveToSelected(element) {
 
   if (element == "next") {
@@ -299,6 +298,8 @@ function moveToSelected(element) {
 
 
     $(selected).removeClass().addClass("selected");
+
+    ahoy.track('article_view', {article_id: parseInt($(selected).attr('id'),10)});
 
     $(prev).removeClass().addClass("prev");
     $(next).removeClass().addClass("next");
