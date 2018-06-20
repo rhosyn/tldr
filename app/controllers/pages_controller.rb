@@ -66,12 +66,18 @@ class PagesController < ApplicationController
   def history
     clicks = Ahoy::Event.where(name: 'article_click').order(time: :desc)
     @history = {}
-    # raise
-    clicks.each do |click|
-      date = "#{click.time.day} #{Date::MONTHNAMES[click.time.month]} #{click.time.year}"
-      @history[date] = [] if !@history.keys.include?(date)
-      article = AylienArticle.find(click.properties['article_id'])
-      @history[date] << article if article && !@history[date].include?(article)
+
+    if !clicks.empty?
+      # begin
+        clicks.each do |click|
+          next if click.properties.nil? || click.properties['article_id'].nil?
+          date = "#{click.time.day} #{Date::MONTHNAMES[click.time.month]} #{click.time.year}"
+          @history[date] = [] if !@history.keys.include?(date)
+          article = AylienArticle.find(click.properties['article_id'])
+          @history[date] << article if article && !@history[date].include?(article)
+        end
+      # rescue
+      # end
     end
   end
 
