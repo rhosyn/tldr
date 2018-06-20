@@ -59,6 +59,7 @@ happyButton.addEventListener('click', function () {
       a.classList.remove("hideLeft");
       a.classList.remove("hidden");
       a.classList.add("visible");
+      a.classList.add("article");
     });
     let visArticles = document.querySelectorAll(".visible");
     let selected = visArticles[0];
@@ -72,7 +73,7 @@ happyButton.addEventListener('click', function () {
         artic.classList.add("hideRight");
       }
     });
-    handleGesture();
+  handleGesture();
 })
 
 catButton.forEach(function (btn) {
@@ -219,16 +220,17 @@ function handleGesture() {
       console.log('swipe left');
       document.querySelector(".selected").children[0].style.display = 'none';
       document.querySelector(".selected").children[1].style.display = 'none';
+      document.querySelector(".next").children[0].style.display = 'block';
+      document.querySelector(".next").children[1].style.display = 'block';
       moveToSelected('next');
-      document.querySelector(".selected").children[0].style.display = 'block';
-      document.querySelector(".selected").children[1].style.display = 'block';
     }
     if (touchendX > touchstartX) {
+      console.log('swipe right');
       document.querySelector(".selected").children[0].style.display = 'none';
       document.querySelector(".selected").children[1].style.display = 'none';
+      document.querySelector(".prev").children[0].style.display = 'block';
+      document.querySelector(".prev").children[1].style.display = 'block';
       moveToSelected('prev');
-      document.querySelector(".selected").children[0].style.display = 'block';
-      document.querySelector(".selected").children[1].style.display = 'block';
     }
 }
 
@@ -268,8 +270,8 @@ function moveToSelected(element) {
     $(prevSecond).prevAll().removeClass().addClass('hideLeft');
 
     let car = document.getElementById("carousel");
-    let btnSelected = document.querySelector(".btn-sm.i-am-selected");
-    let catBtn = document.querySelector(".btn-sm.i-am-selected");
+    let btnSelected = document.querySelector(".btn.i-am-selected");
+    let catBtn = document.querySelector(".btn.i-am-selected");
     Array.from(car.children).forEach(function (ch) {
       if (btnSelected.classList.contains("happy")) {
         ch.classList.remove();
