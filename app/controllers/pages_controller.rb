@@ -71,7 +71,7 @@ class PagesController < ApplicationController
       date = "#{click.time.day} #{Date::MONTHNAMES[click.time.month]} #{click.time.year}"
       @history[date] = [] if !@history.keys.include?(date)
       article = AylienArticle.find(click.properties['article_id'])
-      @history[date] << article if article
+      @history[date] << article if article && !@history[date].include?(article)
     end
   end
 
