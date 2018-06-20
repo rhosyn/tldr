@@ -68,38 +68,38 @@ happyButton.addEventListener('click', function () {
       hide_article.appendChild(card_image);
       carousel.appendChild(hide_article);
     })
+    let articles = document.querySelectorAll(".article");
+      articles.forEach(function (a) {
+        a.classList.remove("visible");
+        a.classList.remove("selected");
+        a.classList.remove("next");
+        a.classList.remove("nextRightSecond");
+        a.classList.remove("prev");
+        a.classList.remove("prevLeftSecond");
+        a.classList.remove("hideRight");
+        a.classList.remove("hideLeft");
+        a.classList.remove("hidden");
+        a.classList.add("visible");
+        a.classList.add("article");
+      });
+      let visArticles = document.querySelectorAll(".visible");
+      let selected = visArticles[0];
+      let next = visArticles[1];
+      let nextRightSecond = visArticles[2];
+      selected.classList.add("selected");
+      next.classList.add("next");
+      nextRightSecond.classList.add("nextRightSecond");
+      visArticles.forEach(function(artic, i) {
+        if (i > 2) {
+          artic.classList.add("hideRight");
+        }
+      });
   } else {
     box.style.display = 'none';
     landingMenu.style.display = 'block';
     // let visArticles = document.querySelectorAll(".visible");
     // visArticles.classList.add("article");
   }
-  let articles = document.querySelectorAll(".article");
-    articles.forEach(function (a) {
-      a.classList.remove("visible");
-      a.classList.remove("selected");
-      a.classList.remove("next");
-      a.classList.remove("nextRightSecond");
-      a.classList.remove("prev");
-      a.classList.remove("prevLeftSecond");
-      a.classList.remove("hideRight");
-      a.classList.remove("hideLeft");
-      a.classList.remove("hidden");
-      a.classList.add("visible");
-      a.classList.add("article");
-    });
-    let visArticles = document.querySelectorAll(".visible");
-    let selected = visArticles[0];
-    let next = visArticles[1];
-    let nextRightSecond = visArticles[2];
-    selected.classList.add("selected");
-    next.classList.add("next");
-    nextRightSecond.classList.add("nextRightSecond");
-    visArticles.forEach(function(artic, i) {
-      if (i > 2) {
-        artic.classList.add("hideRight");
-      }
-    });
   handleGesture();
 })
 
@@ -269,20 +269,29 @@ gestureZone.addEventListener('touchend', function(event) {
 
 function handleGesture() {
     if (touchendX < touchstartX) {
-      console.log('swipe left');
-      document.querySelector(".selected").children[0].style.display = 'none';
-      document.querySelector(".selected").children[1].style.display = 'none';
-      document.querySelector(".next").children[0].style.display = 'block';
-      document.querySelector(".next").children[1].style.display = 'block';
-      moveToSelected('next');
+      if (carousel.lastChild == document.querySelector(".selected")) {
+      } else {
+        if (document.querySelector(".prev") != null) {
+          document.querySelector(".prev").classList.remove("prev");
+        }
+        document.querySelector(".selected").children[0].style.display = 'none';
+        document.querySelector(".selected").children[1].style.display = 'none';
+        document.querySelector(".next").children[0].style.display = 'block';
+        document.querySelector(".next").children[1].style.display = 'block';
+        moveToSelected('next');
+      }
+
     }
     if (touchendX > touchstartX) {
-      console.log('swipe right');
-      document.querySelector(".selected").children[0].style.display = 'none';
-      document.querySelector(".selected").children[1].style.display = 'none';
-      document.querySelector(".prev").children[0].style.display = 'block';
-      document.querySelector(".prev").children[1].style.display = 'block';
-      moveToSelected('prev');
+      if (carousel.firstChild == document.querySelector(".selected")) {
+      } else {
+        console.log('swipe right');
+        document.querySelector(".selected").children[0].style.display = 'none';
+        document.querySelector(".selected").children[1].style.display = 'none';
+        document.querySelector(".prev").children[0].style.display = 'block';
+        document.querySelector(".prev").children[1].style.display = 'block';
+        moveToSelected('prev');
+      }
     }
 }
 
