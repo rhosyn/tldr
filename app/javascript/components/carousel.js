@@ -187,6 +187,7 @@ catButton.forEach(function (btn) {
     if (document.querySelector(".footer-category") != null) {
       document.querySelector(".footer-category").remove();
     }
+    let feed = document.querySelector(".category-feed");
     let footerDiv = document.createElement("div");
     footerDiv.className = "footer-category";
     let footerBreak_one = document.createElement("div");
@@ -199,7 +200,7 @@ catButton.forEach(function (btn) {
     footerDiv.appendChild(footerBreak_one);
     footerDiv.appendChild(category_title);
     footerDiv.appendChild(footerBreak_two);
-    clickMe.appendChild(footerDiv);
+    feed.appendChild(footerDiv);
 
     catButton.forEach(function (cb) {
       cb.classList.remove("i-am-selected");
