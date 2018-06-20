@@ -4,7 +4,7 @@ function history_listeners() {
     element.addEventListener("click", (event) => {
       console.log(event.currentTarget);
       event.currentTarget.classList.toggle('history_active');
-      document.querySelector('.history_container').classList.toggle('smaller');
+      // document.querySelector('.history_container').classList.toggle('smaller');
       // $('.overlay').toggleClass('active');
       document.querySelector('.history_overlay').classList.toggle('active');
       // document.querySelector('.history_expanded_container').classList.toggle('active');
@@ -76,7 +76,7 @@ function destroy_history_snippets() {
     console.log('click quit');
     document.querySelector('.history_overlay').classList.toggle('active');
     document.querySelector('.history_expanded_container').remove();
-    document.querySelector('.history_container').classList.toggle('smaller');
+    // document.querySelector('.history_container').classList.toggle('smaller');
   })
 }
 
