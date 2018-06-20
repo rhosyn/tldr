@@ -30,6 +30,12 @@ function generate_history_expanded (element) {
   // console.log(snippets);
   let container = document.createElement("div");
   container.className = "history_expanded_container";
+  let quit_button = document.createElement("button");
+  quit_button.setAttribute("type", "button");
+  let quit_icon = document.createElement("i");
+  quit_button.className = "fas fa-times-circle quit-button";
+  quit_button.append(quit_icon);
+  container.appendChild(quit_button);
 
   let imgHolder = document.createElement("div");
   imgHolder.className = "history_expanded_img_div";
@@ -49,18 +55,35 @@ function generate_history_expanded (element) {
   snippet_container.classList = "history_expanded_snippet_container";
   const snippets = element.dataset.sentences.split('", "');
   snippets.forEach((s) => {
-  let snippet = document.createElement("div");
-    snippet.classList = "history_expanded_snippet";
+    let snippet = document.createElement("div");
     let s_text = document.createElement("p");
     s_text.innerHTML = s.replace('["','').replace('"]','');
-
+    snippet.classList = "history_expanded_snippet";
     snippet.appendChild(s_text);
     snippet_container.appendChild(snippet);
   })
 
   container.appendChild(snippet_container);
   $( ".history_overlaycontainer" ).append(container);
+  destroy_history_snippets();
 }
 
 $('document').ready(history_listeners())
+
+function destroy_history_snippets() {
+  let quit = document.querySelector(".quit-button");
+  quit.addEventListener('click', (event) => {
+    console.log('click quit');
+    document.querySelector('.history_overlay').classList.toggle('active');
+    document.querySelector('.history_expanded_container').remove();
+    document.querySelector('.history_container').classList.toggle('smaller');
+  })
+}
+
+
+
+
+
+
+
 

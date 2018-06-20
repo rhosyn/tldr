@@ -126,7 +126,7 @@ function destroy_snippets() {
   current_snippet = parseInt(document.querySelector(".snippet_active").id.replace('snippet-',''), 10);
   ahoy.track('snippet_destroy', {article_id: active_card_id, snippet_no: current_snippet});
   document.querySelectorAll('.snippet_container').forEach((snippet) => {
-    console.log(snippet);
+    // console.log(snippet);
     snippet.remove();
   })
 }
