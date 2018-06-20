@@ -1,0 +1,39 @@
+.history_header.top {
+  background-color: #51515f;
+  margin-top: 0;
+  text-align: center !important;
+  // display: flex;
+  // justify-content: center;
+  margin-bottom: 39px;
+  padding: 27px;
+}
+
+.history_article.top {
+  height: 80px;
+  border-bottom: none;
+  margin-bottom: none !important;
+  display: flex;
+  color: #dad4d4;
+      margin: inherit;
+    padding: 0 5px;
+  h1 {
+    font-family: Raleway;
+    color: #dad4d4;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 18px;
+  }
+  i {
+    color: #dad4d4;
+    font-size: 25px;
+    padding: 10px
+  }
+}
+
+.history_card.top {
+  background-color: #31243e;
+}
+
+.history-header-para {
+  margin-bottom: 16px !important;
+}
