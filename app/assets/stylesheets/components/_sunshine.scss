@@ -1,0 +1,101 @@
+$t: 7s;
+$sun: #af821f;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.box {
+  display: none;
+  position: absolute;
+  top: 144px;
+  display: none;
+  top: 79%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  overflow: hidden;
+}
+
+.sun {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  border: 6px solid $sun;
+  border-radius: 50%;
+  transform: translate3d(0,110px,0);
+  animation: $t sun ease infinite;
+}
+
+@keyframes sun {
+  0% { transform: translate3d(0,110px,0); }
+  20% { transform: translate3d(0,110px,0); }
+  25% { transform: translate3d(0,70px,0); }
+  75% { transform: translate3d(0,70px,0); }
+  80% { transform: translate3d(0,110px,0); }
+  100% { transform: translate3d(0,110px,0); }
+}
+
+.shine {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  animation: 20s shine linear infinite;
+}
+
+.r {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3px;
+  height: 70px;
+  border-bottom: 12px solid $sun;
+  transform-origin: top;
+}
+
+@for $i from 1 through 8 {
+  .r:nth-child(#{$i}) {
+    transform: rotate(45deg * $i);
+  }
+}
+
+@keyframes shine {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.eyes {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  width: 30px;
+  height: 5px;
+  margin: -5px 0 0 0;
+  animation: $t eyes ease infinite;
+}
+
+.left, .right {
+  float: left;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: $sun;
+}
+
+.right {
+  float: right;
+}
+
+@keyframes eyes {
+  0% { transform: translate3d(0,0,0); }
+  42% { transform: translate3d(0,0,0); }
+  45% { transform: translate3d(40px,0,0); }
+  55% { transform: translate3d(40px,0,0); }
+  58% { transform: translate3d(0,0,0); }
+  100% { transform: translate3d(0,0,0); }
+}

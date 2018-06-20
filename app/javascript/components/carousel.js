@@ -6,6 +6,7 @@ const footerLinks = document.querySelector(".footer-links");
 const overlay = document.querySelector(".overlay");
 const catTitle = document.querySelector(".carousel-cat-title");
 const clickMe = document.querySelector(".click_me_container");
+const box = document.querySelector(".box");
 
 happyButton.addEventListener('click', function () {
   happyButton.classList.toggle("happy");
@@ -18,6 +19,7 @@ happyButton.addEventListener('click', function () {
   footerLinks.style.display = 'flex';
   carousel.innerHTML = "";
   if (happyButton.classList.contains("happy")) {
+    box.style.display = 'block';
 
     // let footerDiv = document.createElement("div");
     // footerDiv.className = "footer-category";
@@ -65,6 +67,8 @@ happyButton.addEventListener('click', function () {
       hide_article.appendChild(card_image);
       carousel.appendChild(hide_article);
     })
+  } else {
+    box.style.display = 'none';
   }
   let articles = document.querySelectorAll(".article");
     articles.forEach(function (a) {
