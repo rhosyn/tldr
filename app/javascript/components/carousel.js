@@ -69,6 +69,7 @@ happyButton.addEventListener('click', function () {
     })
   } else {
     box.style.display = 'none';
+    landingMenu.style.display = 'block';
   }
   let articles = document.querySelectorAll(".article");
     articles.forEach(function (a) {
