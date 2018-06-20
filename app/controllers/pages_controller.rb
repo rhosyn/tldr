@@ -74,5 +74,29 @@ class PagesController < ApplicationController
       @history[date] << article if article
     end
   end
+
+
+  def my_articles
+    popular_categories = {}
+    clicked_articles = []
+    article_cnt = 0
+    article_click_events = Ahoy::Event.where(name: 'article_click')
+    article_click_events.each do |e|
+      next if e.properties['article_id'].nil?
+      article = AylienArticle.find(e.properties['article_id'])
+      clicked_articles << article if !clicked_articles.index(article)
+      article.aylien_categories.each do |c|
+
+        # do non-mainstream categories
+        next if c.iab.index('-').nil? || c.iab.index('IAB').nil? || c.category.nil?
+        popular_categories[c.iab] = 0 if !popular_categories.keys.include?(c.iab)
+        popular_categories[c.iab] = popular_categories[c.iab] + 1
+        article_cnt += 1
+      end
+    end
+
+    # Popular sub-categories ranked by frequency
+    popular_categories.sort_by{|_key,value| value}.reverse.to_h
+  end
 end
 
