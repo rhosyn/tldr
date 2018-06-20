@@ -10,6 +10,7 @@ const box = document.querySelector(".box");
 
 happyButton.addEventListener('click', function () {
   happyButton.classList.toggle("happy");
+  console.log('happy click');
   if (document.querySelector(".footer-category") != null) {
     document.querySelector(".footer-category").remove();
   }
@@ -67,41 +68,44 @@ happyButton.addEventListener('click', function () {
       hide_article.appendChild(card_image);
       carousel.appendChild(hide_article);
     })
+    let articles = document.querySelectorAll(".article");
+      articles.forEach(function (a) {
+        a.classList.remove("visible");
+        a.classList.remove("selected");
+        a.classList.remove("next");
+        a.classList.remove("nextRightSecond");
+        a.classList.remove("prev");
+        a.classList.remove("prevLeftSecond");
+        a.classList.remove("hideRight");
+        a.classList.remove("hideLeft");
+        a.classList.remove("hidden");
+        a.classList.add("visible");
+        a.classList.add("article");
+      });
+      let visArticles = document.querySelectorAll(".visible");
+      let selected = visArticles[0];
+      let next = visArticles[1];
+      let nextRightSecond = visArticles[2];
+      selected.classList.add("selected");
+      next.classList.add("next");
+      nextRightSecond.classList.add("nextRightSecond");
+      visArticles.forEach(function(artic, i) {
+        if (i > 2) {
+          artic.classList.add("hideRight");
+        }
+      });
   } else {
     box.style.display = 'none';
     landingMenu.style.display = 'block';
+    // let visArticles = document.querySelectorAll(".visible");
+    // visArticles.classList.add("article");
   }
-  let articles = document.querySelectorAll(".article");
-    articles.forEach(function (a) {
-      a.classList.remove("visible");
-      a.classList.remove("selected");
-      a.classList.remove("next");
-      a.classList.remove("nextRightSecond");
-      a.classList.remove("prev");
-      a.classList.remove("prevLeftSecond");
-      a.classList.remove("hideRight");
-      a.classList.remove("hideLeft");
-      a.classList.remove("hidden");
-      a.classList.add("visible");
-      a.classList.add("article");
-    });
-    let visArticles = document.querySelectorAll(".visible");
-    let selected = visArticles[0];
-    let next = visArticles[1];
-    let nextRightSecond = visArticles[2];
-    selected.classList.add("selected");
-    next.classList.add("next");
-    nextRightSecond.classList.add("nextRightSecond");
-    visArticles.forEach(function(artic, i) {
-      if (i > 2) {
-        artic.classList.add("hideRight");
-      }
-    });
   handleGesture();
 })
 
 catButton.forEach(function (btn) {
   btn.addEventListener('click', function() {
+    console.log('category click');
     landingMenu.style.display = 'none';
     footerLinks.style.display = 'flex';
     carousel.innerHTML = "";
@@ -200,7 +204,7 @@ catButton.forEach(function (btn) {
     catButton.forEach(function (cb) {
       cb.classList.remove("i-am-selected");
     })
-    btn.classList.add("i-am-selected")
+    btn.classList.add("i-am-selected");
       if (carousel.children[0].classList.contains("article")) {
 
       } else {
@@ -265,20 +269,29 @@ gestureZone.addEventListener('touchend', function(event) {
 
 function handleGesture() {
     if (touchendX < touchstartX) {
-      console.log('swipe left');
-      document.querySelector(".selected").children[0].style.display = 'none';
-      document.querySelector(".selected").children[1].style.display = 'none';
-      document.querySelector(".next").children[0].style.display = 'block';
-      document.querySelector(".next").children[1].style.display = 'block';
-      moveToSelected('next');
+      if (carousel.lastChild == document.querySelector(".selected")) {
+      } else {
+        if (document.querySelector(".prev") != null) {
+          document.querySelector(".prev").classList.remove("prev");
+        }
+        document.querySelector(".selected").children[0].style.display = 'none';
+        document.querySelector(".selected").children[1].style.display = 'none';
+        document.querySelector(".next").children[0].style.display = 'block';
+        document.querySelector(".next").children[1].style.display = 'block';
+        moveToSelected('next');
+      }
+
     }
     if (touchendX > touchstartX) {
-      console.log('swipe right');
-      document.querySelector(".selected").children[0].style.display = 'none';
-      document.querySelector(".selected").children[1].style.display = 'none';
-      document.querySelector(".prev").children[0].style.display = 'block';
-      document.querySelector(".prev").children[1].style.display = 'block';
-      moveToSelected('prev');
+      if (carousel.firstChild == document.querySelector(".selected")) {
+      } else {
+        console.log('swipe right');
+        document.querySelector(".selected").children[0].style.display = 'none';
+        document.querySelector(".selected").children[1].style.display = 'none';
+        document.querySelector(".prev").children[0].style.display = 'block';
+        document.querySelector(".prev").children[1].style.display = 'block';
+        moveToSelected('prev');
+      }
     }
 }
 
@@ -318,7 +331,6 @@ function moveToSelected(element) {
 
     let car = document.getElementById("carousel");
     let btnSelected = document.querySelector(".btn.i-am-selected");
-    let catBtn = document.querySelector(".btn.i-am-selected");
     Array.from(car.children).forEach(function (ch) {
       if (btnSelected.classList.contains("happy")) {
         ch.classList.remove();
@@ -330,7 +342,7 @@ function moveToSelected(element) {
         ch.children[1].classList.add("headline");
         ch.children[2].classList.remove();
         ch.children[2].classList.add("card-image");
-      } else if (ch.dataset.category == catBtn.dataset.category) {
+      } else {
         ch.classList.remove();
         ch.classList.add("visible");
         ch.classList.add("article");
@@ -340,9 +352,6 @@ function moveToSelected(element) {
         ch.children[1].classList.add("headline");
         ch.children[2].classList.remove();
         ch.children[2].classList.add("card-image");
-      } else {
-        ch.classList.add("hidden")
-        ch.classList.remove("visible");
       }
     });
     let img = document.querySelectorAll(".card-image");
