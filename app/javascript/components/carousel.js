@@ -10,6 +10,7 @@ const box = document.querySelector(".box");
 
 happyButton.addEventListener('click', function () {
   happyButton.classList.toggle("happy");
+  console.log('happy click');
   if (document.querySelector(".footer-category") != null) {
     document.querySelector(".footer-category").remove();
   }
@@ -70,6 +71,8 @@ happyButton.addEventListener('click', function () {
   } else {
     box.style.display = 'none';
     landingMenu.style.display = 'block';
+    // let visArticles = document.querySelectorAll(".visible");
+    // visArticles.classList.add("article");
   }
   let articles = document.querySelectorAll(".article");
     articles.forEach(function (a) {
@@ -102,6 +105,7 @@ happyButton.addEventListener('click', function () {
 
 catButton.forEach(function (btn) {
   btn.addEventListener('click', function() {
+    console.log('category click');
     landingMenu.style.display = 'none';
     footerLinks.style.display = 'flex';
     carousel.innerHTML = "";
@@ -200,7 +204,7 @@ catButton.forEach(function (btn) {
     catButton.forEach(function (cb) {
       cb.classList.remove("i-am-selected");
     })
-    btn.classList.add("i-am-selected")
+    btn.classList.add("i-am-selected");
       if (carousel.children[0].classList.contains("article")) {
 
       } else {
@@ -318,7 +322,6 @@ function moveToSelected(element) {
 
     let car = document.getElementById("carousel");
     let btnSelected = document.querySelector(".btn.i-am-selected");
-    let catBtn = document.querySelector(".btn.i-am-selected");
     Array.from(car.children).forEach(function (ch) {
       if (btnSelected.classList.contains("happy")) {
         ch.classList.remove();
@@ -330,7 +333,7 @@ function moveToSelected(element) {
         ch.children[1].classList.add("headline");
         ch.children[2].classList.remove();
         ch.children[2].classList.add("card-image");
-      } else if (ch.dataset.category == catBtn.dataset.category) {
+      } else {
         ch.classList.remove();
         ch.classList.add("visible");
         ch.classList.add("article");
@@ -340,9 +343,6 @@ function moveToSelected(element) {
         ch.children[1].classList.add("headline");
         ch.children[2].classList.remove();
         ch.children[2].classList.add("card-image");
-      } else {
-        ch.classList.add("hidden")
-        ch.classList.remove("visible");
       }
     });
     let img = document.querySelectorAll(".card-image");
