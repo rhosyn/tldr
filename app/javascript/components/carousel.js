@@ -4,19 +4,36 @@ const carousel = document.getElementById("carousel");
 const landingMenu = document.getElementById("menu");
 const footerLinks = document.querySelector(".footer-links");
 const overlay = document.querySelector(".overlay");
-let catTitle = document.querySelector(".carousel-cat-title");
+const catTitle = document.querySelector(".carousel-cat-title");
+const clickMe = document.querySelector(".click_me_container");
 
 happyButton.addEventListener('click', function () {
   happyButton.classList.toggle("happy");
+  if (document.querySelector(".footer-category") != null) {
+    document.querySelector(".footer-category").remove();
+  }
   overlay.classList.remove("hidden");
   happyButton.classList.add("i-am-selected");
   landingMenu.style.display = 'none';
   footerLinks.style.display = 'flex';
   carousel.innerHTML = "";
   if (happyButton.classList.contains("happy")) {
+
+    // let footerDiv = document.createElement("div");
+    // footerDiv.className = "footer-category";
+    // let footerBreak_one = document.createElement("div");
+    // let footerBreak_two = document.createElement("div");
+    // footerBreak_one.className = "footer-break-one";
+    // footerBreak_two.className = "footer-break-two";
+    // let smiley_face = document.createElement("i");
+    // smiley_face.className = "far fa-smile";
+    // footerDiv.appendChild(footerBreak_one);
+    // footerDiv.appendChild(smiley_face);
+    // footerDiv.appendChild(footerBreak_two);
+    // clickMe.appendChild(footerDiv);
+
+
     happy_array.forEach(function (happy) {
-
-
       let hide_article = document.createElement("div");
       hide_article.className = 'hideRight article';
       hide_article.id = happy.id;
@@ -158,6 +175,9 @@ catButton.forEach(function (btn) {
     if (document.querySelector(".carousel-cat-title") != null) {
       catTitle.remove();
     }
+    if (document.querySelector(".footer-category") != null) {
+      document.querySelector(".footer-category").remove();
+    }
     let footerDiv = document.createElement("div");
     footerDiv.className = "footer-category";
     let footerBreak_one = document.createElement("div");
@@ -168,8 +188,8 @@ catButton.forEach(function (btn) {
     category_title.className = "carousel-cat-title";
     category_title.innerText = btn.dataset.category;
     footerDiv.appendChild(footerBreak_one);
-    footerDiv.appendChild(footerBreak_two);
     footerDiv.appendChild(category_title);
+    footerDiv.appendChild(footerBreak_two);
     clickMe.appendChild(footerDiv);
 
     catButton.forEach(function (cb) {
@@ -321,6 +341,7 @@ function moveToSelected(element) {
     });
     let img = document.querySelectorAll(".card-image");
     img.forEach(function (i) {i.classList.remove("selected")});
+    document.querySelector(".selected").classList.remove('hidden');
 }
 
 
