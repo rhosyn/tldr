@@ -4,6 +4,7 @@ const carousel = document.getElementById("carousel");
 const landingMenu = document.getElementById("menu");
 const footerLinks = document.querySelector(".footer-links");
 const overlay = document.querySelector(".overlay");
+let catTitle = document.querySelector(".carousel-cat-title");
 
 happyButton.addEventListener('click', function () {
   happyButton.classList.toggle("happy");
@@ -14,6 +15,7 @@ happyButton.addEventListener('click', function () {
   carousel.innerHTML = "";
   if (happyButton.classList.contains("happy")) {
     happy_array.forEach(function (happy) {
+
 
       let hide_article = document.createElement("div");
       hide_article.className = 'hideRight article';
@@ -118,6 +120,7 @@ catButton.forEach(function (btn) {
         }
       } else {
           if (a.category == btn.dataset.category) {
+
             let hide_article = document.createElement("div");
             hide_article.className = 'hideRight article';
             hide_article.id = a.id;
@@ -150,6 +153,25 @@ catButton.forEach(function (btn) {
           }
       }
     })
+    let catTitle = document.querySelector(".carousel-cat-title");
+    let clickMe = document.querySelector(".click_me_container");
+    if (document.querySelector(".carousel-cat-title") != null) {
+      catTitle.remove();
+    }
+    let footerDiv = document.createElement("div");
+    footerDiv.className = "footer-category";
+    let footerBreak_one = document.createElement("div");
+    let footerBreak_two = document.createElement("div");
+    footerBreak_one.className = "footer-break-one";
+    footerBreak_two.className = "footer-break-two";
+    let category_title = document.createElement("h1");
+    category_title.className = "carousel-cat-title";
+    category_title.innerText = btn.dataset.category;
+    footerDiv.appendChild(footerBreak_one);
+    footerDiv.appendChild(footerBreak_two);
+    footerDiv.appendChild(category_title);
+    clickMe.appendChild(footerDiv);
+
     catButton.forEach(function (cb) {
       cb.classList.remove("i-am-selected");
     })

@@ -252,6 +252,35 @@ html, body, main {
   }
 }
 
+.carousel-cat-title {
+  opacity: 0.9;
+  position: relative;
+  top: -8.5vh;
+  font-family: Raleway;
+  color: #ffffffb5;
+  font-weight: 400;
+  font-size: 16px;
+  z-index: 2000;
+}
+
+.footer-break-one {
+  width: 62px;
+  position: absolute;
+  height: 16px;
+  bottom: 10vh;
+  // background-color: red;
+  border-bottom: 1px solid #6b5575;
+}
+
+.footer-break-two {
+  width: 62px;
+  position: absolute;
+  height: 16px;
+  bottom: 10vh;
+  // background-color: red;
+  right: 0vw;
+  border-bottom: 1px solid #6b5575;
+}
 
 
 @media(min-width: 600px) {
