@@ -234,7 +234,6 @@ function handleGesture() {
     }
 }
 
-handleGesture();
 
 
 function moveToSelected(element) {
