@@ -3,8 +3,9 @@
 </script> -->
 
 <div class="fixed-top">
-  <button type="button" class="btn pulse" id="happy-button"></i></button>
-  <a href="/"><h1>tldr</h1></a>
+  <button type="button" class="btn pulse" id="happy-deactivated"></i></button>
+  <a href="/" class="homepage-link"><h1>tldr</h1></a>
+  <a href="/my_articles" class="history_link"><i class="far fa-lightbulb"></i></a>
   <a href="/history" class="history_link"><i class="fas fa-history"></i></a>
 </div>
 
@@ -17,6 +18,15 @@
 </div>
 
 <div class="history_container">
+  <div class="history_card top">
+    <div class="history_elements top">
+      <!-- <div class="history_header top"></div> -->
+      <div class="history_article top">
+        <i class="far fa-lightbulb"></i><h1>You might like....</h1>
+        <p class="history-header-para">We've selected some articles you might enjoy reading based on the articles you've read in the past.</p>
+      </div>
+    </div>
+  </div>
   <% @my_articles.each do |category,article_array| %>
   <div class="history_card">
     <div class="history_header"><p><%= category %></p>
