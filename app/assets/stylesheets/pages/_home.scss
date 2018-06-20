@@ -109,6 +109,10 @@ html, body, main {
   .headline {
     opacity: 1;
     transition: all ease 0.5s;
+    display: block !important;
+  }
+  .date {
+    display: block !important;
   }
 }
 #carousel div.next {
