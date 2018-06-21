@@ -80,9 +80,24 @@ function generate_snippets() {
   article_link.setAttribute('href', article_url);
   article_link.setAttribute('target', '_blank');
   article_link.innerHTML = "here";
+
+
+  let share_div = document.createElement("div");
+  share_div.className = 'whatsapp';
+  let share_link = document.createElement("a");
+  share_link.setAttribute('href', '');
+  share_link.innerHTML = "Share on WhatsApp";
+
+  let url = 'whatsapp://send?text=';
+  let text = 'Hey check out this awesome article I read on https://tldr.world:' + '  ' + article_url;
+  let encodedText = encodeURIComponent(text);
+  share_link.setAttribute('href', url + encodedText);
+
+  share_div.appendChild(share_link);
   content_p.appendChild(article_link);
 
   snippet_content.appendChild(content_p);
+  snippet_content.appendChild(share_div);
   snippet_container.appendChild(snippet_content);
 
   let snippet_no = document.createElement("div");

@@ -27,3 +27,5 @@ $('.selector button').click(function(e) {
 });
 
 setTimeout(function() { toggleOptions('.selector'); }, 100);
+
+if(typeof wabtn4fg==="undefined"){wabtn4fg=1;h=document.head||document.getElementsByTagName("head")[0],s=document.createElement("script");s.type="text/javascript";s.src="//whatsapp-sharing.com/button";h.appendChild(s);}
