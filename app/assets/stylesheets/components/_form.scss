@@ -1,0 +1,35 @@
+.form-header {
+  margin-top: 90px !important;
+  font-family: Raleway;
+  color: #cdc9d2;
+}
+
+.simple_form {
+  color: #cdc9d2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form-control-label {
+  font-weight: 400;
+}
+
+.form-actions {
+  .btn {
+    background-color: #fffafa;
+    color: #5d4067;
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 20px !important;
+    font-family: Raleway;
+  }
+}
+.user_remember_me {
+      border: none;
+}
+
+.text-muted {
+  color: #4d405a;
+}
