@@ -8,8 +8,8 @@ class AylienApiJob < ApplicationJob
     categories.each do |category|
 
       AylienNewsApi.configure do |config|
-        config.api_key['X-AYLIEN-NewsAPI-Application-ID'] = '54255824'
-        config.api_key['X-AYLIEN-NewsAPI-Application-Key'] = 'ba9024a8043e591e8368ba8f6a1e4bf6'
+        config.api_key['X-AYLIEN-NewsAPI-Application-ID'] = '67e85dc3'
+        config.api_key['X-AYLIEN-NewsAPI-Application-Key'] = '8f5fdd41657d8f611e89ca606c5a1f51'
       end
 
       api_instance = AylienNewsApi::DefaultApi.new
